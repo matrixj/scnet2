@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jmchen/work/scnet2/src/base/tests/BaseLoopAndThread.cpp
+base/Thread.hpp
+-
+base/BaseLoop.hpp
+-
+
+src/base/BaseLoop.hpp
+boost/noncopyable.hpp
+-
+
+src/base/Thread.hpp
+boost/noncopyable.hpp
+-
+boost/shared_ptr.hpp
+-
+boost/function.hpp
+-
+string
+-
+pthread.h
+-
+

@@ -1,0 +1,1 @@
+/home/jmchen/work/build/debug-install/lib/libscnet2_base.a
