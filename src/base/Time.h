@@ -1,56 +1,66 @@
 #ifndef _SCNET2_BASE_TIME_H_
 #define _SCNET2_BASE_TIME_H_
 
-namespace scnet2
-{
-namespace base
-{
-class Time : boost::noncopyable
-{
-    Timer(const TimerCb& cb, Timestamp ts, double interval)
+#include <base/TypedefCallback.h>
+#include <base/AtomicInt.h>
+#include <base/Timestamp.h>
+
+#include <boost/noncopyable.hpp>
+
+namespace scnet2 {
+namespace base {
+
+class Time;
+class TimerId : scnet2::copyable {
+    public:
+        TimerId(Time *timer, int64_t id);
+        ~TimerId();
+        friend class Timer;
+    private:
+        Time *_timer;
+        int64_t _id;
+
+};
+    
+class Time : boost::noncopyable {
+ public:
+    Time(const Timercb& cb, Timestamp ts, double interval)
         : _callback(cb),
           _expiration(ts),
           _interval(interval),
-          _repeat(interval > 0.0)
-          _sequence(_s_numCreated.incrementAndGet())
-    {
+          _repeat(interval > 0.0),
+          _sequence(_s_numCreated.incrementAndGet()) { }
 
-    }
-
-    void run() const
-    {
+    void run() const {
         _callback();
     }
 
-    Timestamp expiration() const
-    {
+    Timestamp expiration() const {
         return _expiration;
     }
 
-    int64_t sequence() const 
-    {
+    int64_t sequence() const {
         return _sequence;
     }
 
-    bool repeat() const
-    {
+    bool toRepeat() const {
         return _repeat;
     }
 
     void restart(Timestamp ts);
-    static int64_t numCreated() 
-    {
+    static int64_t numCreated() {
         return _s_numCreated.get();
     }
 
-    private:
-    const TimerCb _callback;
-    Timestamp _expiration;
-    const double _interval;
-    const bool  _repeat;
-    const int64_t _sequence;
     
-    static AtomicInt64 _s_numCreated;
+ private:
+  const Timercb _callback;
+  Timestamp _expiration;
+  const double _interval;
+  const bool  _repeat;
+  const int64_t _sequence;
+    
+  static AtomicInt _s_numCreated;
 
 };
 }

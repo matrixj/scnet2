@@ -76,7 +76,7 @@ src/base/preinstall: src/base/tests/preinstall
 src/base/CMakeFiles/scnet2_base.dir/all:
 	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/depend
 	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  1 2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  1 2 3 4 5 6
 	@echo "Built target scnet2_base"
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/all
 
@@ -86,7 +86,7 @@ all: src/base/CMakeFiles/scnet2_base.dir/all
 
 # Build rule for subdir invocation for target.
 src/base/CMakeFiles/scnet2_base.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 src/base/CMakeFiles/scnet2_base.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 0
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/rule
@@ -126,7 +126,7 @@ src/base/tests/preinstall:
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all: src/base/CMakeFiles/scnet2_base.dir/all
 	$(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/depend
 	$(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  7
 	@echo "Built target BaseLoopAndThread"
 .PHONY : src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
 
@@ -136,7 +136,7 @@ all: src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
 
 # Build rule for subdir invocation for target.
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 0
 .PHONY : src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule

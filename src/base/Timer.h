@@ -1,7 +1,13 @@
 #ifndef SCNET2_BASE_TIMER_H_
 #define SCNET2_BASE_TIMER_H_
 
-#include <base/timer.h>
+#include <set>
+#include <vector>
+
+#include <base/Time.h>
+#include <base/Timestamp.h>
+#include <base/TypedefCallback.h>
+#include <base/Channel.h>
 
 #include <boost/noncopyable.hpp>
 
@@ -9,6 +15,11 @@ namespace scnet2
 {
 namespace base
 {
+    class BaseLoop;
+    //class TimerId;
+    class Time;
+    //class Channel;
+
     class Timer : boost::noncopyable
     {
         public:
@@ -16,13 +27,17 @@ namespace base
             ~Timer();
 
             TimerId addTimer(const Timercb& cb,
-                            Timerstamp time,
+                            Timestamp time,
                             double interval);
+
+            void addTimerLoop(Time *t);
 
             void cancle(TimerId timerId);
 
+            void readcb();
+
         private:
-            typedef std::pair<Timerstamp, Timer*> TimerMap;
+            typedef std::pair<Timestamp, Timer*> TimerMap;
             typedef std::set<TimerMap> timerList;
             typedef std::pair<Timer*, int64_t>  endTimer;
             typedef std::set<endTimer> endTimerList;  
@@ -35,6 +50,8 @@ namespace base
             timerList _timerList;
             endTimerList _endTimerList;
             bool _callingExpiredTimers;
+
+            timerList _timers;
 
             endTimerList _cancelingTimers;
 

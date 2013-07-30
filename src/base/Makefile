@@ -177,6 +177,30 @@ BaseLoop.cpp.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cpp.s
 .PHONY : BaseLoop.cpp.s
 
+Channel.o: Channel.cpp.o
+.PHONY : Channel.o
+
+# target to build an object file
+Channel.cpp.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cpp.o
+.PHONY : Channel.cpp.o
+
+Channel.i: Channel.cpp.i
+.PHONY : Channel.i
+
+# target to preprocess a source file
+Channel.cpp.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cpp.i
+.PHONY : Channel.cpp.i
+
+Channel.s: Channel.cpp.s
+.PHONY : Channel.s
+
+# target to generate assembly for a file
+Channel.cpp.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cpp.s
+.PHONY : Channel.cpp.s
+
 Thread.o: Thread.cpp.o
 .PHONY : Thread.o
 
@@ -201,6 +225,78 @@ Thread.cpp.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Thread.cpp.s
 .PHONY : Thread.cpp.s
 
+Time.o: Time.cpp.o
+.PHONY : Time.o
+
+# target to build an object file
+Time.cpp.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Time.cpp.o
+.PHONY : Time.cpp.o
+
+Time.i: Time.cpp.i
+.PHONY : Time.i
+
+# target to preprocess a source file
+Time.cpp.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Time.cpp.i
+.PHONY : Time.cpp.i
+
+Time.s: Time.cpp.s
+.PHONY : Time.s
+
+# target to generate assembly for a file
+Time.cpp.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Time.cpp.s
+.PHONY : Time.cpp.s
+
+Timer.o: Timer.cpp.o
+.PHONY : Timer.o
+
+# target to build an object file
+Timer.cpp.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timer.cpp.o
+.PHONY : Timer.cpp.o
+
+Timer.i: Timer.cpp.i
+.PHONY : Timer.i
+
+# target to preprocess a source file
+Timer.cpp.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timer.cpp.i
+.PHONY : Timer.cpp.i
+
+Timer.s: Timer.cpp.s
+.PHONY : Timer.s
+
+# target to generate assembly for a file
+Timer.cpp.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timer.cpp.s
+.PHONY : Timer.cpp.s
+
+Timestamp.o: Timestamp.cpp.o
+.PHONY : Timestamp.o
+
+# target to build an object file
+Timestamp.cpp.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cpp.o
+.PHONY : Timestamp.cpp.o
+
+Timestamp.i: Timestamp.cpp.i
+.PHONY : Timestamp.i
+
+# target to preprocess a source file
+Timestamp.cpp.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cpp.i
+.PHONY : Timestamp.cpp.i
+
+Timestamp.s: Timestamp.cpp.s
+.PHONY : Timestamp.s
+
+# target to generate assembly for a file
+Timestamp.cpp.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cpp.s
+.PHONY : Timestamp.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -217,9 +313,21 @@ help:
 	@echo "... BaseLoop.o"
 	@echo "... BaseLoop.i"
 	@echo "... BaseLoop.s"
+	@echo "... Channel.o"
+	@echo "... Channel.i"
+	@echo "... Channel.s"
 	@echo "... Thread.o"
 	@echo "... Thread.i"
 	@echo "... Thread.s"
+	@echo "... Time.o"
+	@echo "... Time.i"
+	@echo "... Time.s"
+	@echo "... Timer.o"
+	@echo "... Timer.i"
+	@echo "... Timer.s"
+	@echo "... Timestamp.o"
+	@echo "... Timestamp.i"
+	@echo "... Timestamp.s"
 .PHONY : help
 
 

@@ -1,15 +1,20 @@
 #include <base/Timer.h>
+#include <base/Time.h>
 #include <base/BaseLoop.h>
+#include <base/Timestamp.h>
+#include <base/Channel.h>
 
 #include <boost/bind.hpp>
 
+#include <stdio.h>
 #include <sys/timerfd.h>
+#include <sys/time.h>
 
 namespace scnet2
 {
 namespace base
 {
-namespace more
+namespace detail
 {
 int createTimerfd()
 {
@@ -22,20 +27,21 @@ int createTimerfd()
     return fd;
 }
 
-struct timerspec howMuchTimerFromNow(Timerstamp t)
+struct timespec howMuchTimerFromNow(Timestamp t)
 {
     int64_t ms = t.microSecondsSinceEpoch()
-                    - Timerstamp::now().microSecondsSinceEpoch();
+                    - Timestamp::now().microSecondsSinceEpoch();
     if (ms < 100) {
         ms = 100;
     }
     struct timespec ts;
-    ts.tv_sec = static_cast<time_t>(ms / Timerstamp::kMicroSecondsPerSecond);
-    ts.tv_nsec = static_cast<long>(ms % Timerstamp::kMicroSecondsPerSecond)
+    ts.tv_sec = static_cast<time_t>(ms / 1000000);
+    ts.tv_nsec = static_cast<long>((ms % 1000000) *
+                                   1000 );
     return ts;
 }
 
-void readTimerfd(int fd, Timerstamp t)
+void readTimerfd(int fd, Timestamp t)
 {
     uint64_t rdbuf;
     ssize_t n = ::read(fd, &rdbuf, sizeof rdbuf);
@@ -44,7 +50,7 @@ void readTimerfd(int fd, Timerstamp t)
     }
 }
 
-void resetTimerfd(int fd, Timerstamp expiration)
+void resetTimerfd(int fd, Timestamp expiration)
 {
     struct itimerspec newTimerspec;
     struct itimerspec oldTimerspec;
@@ -65,18 +71,18 @@ void resetTimerfd(int fd, Timerstamp expiration)
 
 using namespace scnet2;
 using namespace scnet2::base;
-using namespace sncet2::base:detail
+using namespace scnet2::base::detail;
 
 Timer::Timer(BaseLoop *loop)
-    :_loop(loop)
+    :_loop(loop),
      _timerfd(createTimerfd()),
-     _timers(),
-     _callingExpiredTimers(false)
+     _channel(loop, _timerfd),
+     _callingExpiredTimers(false),
+     _timers()
 {
     _channel.setReadCb(
-        boost::bind(&Timer::readCb, this));
+        boost::bind(&Timer::readcb, this));
     _channel.enableRead();
-
 }
 
 Timer::~Timer()
@@ -88,14 +94,14 @@ Timer::~Timer()
         }
 }
 
-TimerId Timer::addTimer(const TimerCb& cb,
+TimerId Timer::addTimer(const Timercb& cb,
                        Timestamp ts,
                        double interval)
 {
     Time *t = new Time(cb, ts, interval);
     _loop->runInLoop(
         boost::bind(&Timer::addTimerLoop, this, t));
-    return TimerId(timer, timer->sequence());
+    return TimerId(t, t->sequence());
 }
 
 void Timer::addTimerLoop(Time *t)
@@ -108,7 +114,7 @@ void Timer::addTimerLoop(Time *t)
 }
 
 
-void Timer::handleRead()
+void Timer::readcb()
 {
     Timestamp ts(Timestamp::now());
     readTimerfd(_timerfd, ts);
@@ -124,6 +130,10 @@ void Timer::handleRead()
     reset(expired, ts);
 }
 
+std::vector<TimerMap> Timer::getExpired(const Timestamp& ts) {
+  _timerlist.
+}
+
 void Timer::reset(const std::vector<TimerMap>& expired, Timestamp ts)
 {
     Timestamp nextExpire;
@@ -131,7 +141,7 @@ void Timer::reset(const std::vector<TimerMap>& expired, Timestamp ts)
         i != expired.end(); ++i) {
             endTimer timer(i->second, i->second->sequence());
             //if the timer was setted to repeat and not be canceled
-            if (i->second->repeat()
+            if (i->second->toRepeat()
                && _cancelingTimers.find(timer) == _cancelingTimers.end()) {
                    i->second->restart(ts);
                    insert(i->second);

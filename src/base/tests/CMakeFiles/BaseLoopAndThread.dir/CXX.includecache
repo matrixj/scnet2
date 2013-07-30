@@ -7,16 +7,24 @@
 #IncludeRegexTransform: 
 
 /home/jmchen/work/scnet2/src/base/tests/BaseLoopAndThread.cpp
-base/Thread.hpp
+base/Thread.h
 -
-base/BaseLoop.hpp
+base/BaseLoop.h
 -
 
-src/base/BaseLoop.hpp
+src/base/BaseLoop.h
+base/Timer.h
+-
+base/Timestamp.h
+-
+base/TypedefCallback.h
+-
 boost/noncopyable.hpp
 -
+boost/scoped_ptr.hpp
+-
 
-src/base/Thread.hpp
+src/base/Thread.h
 boost/noncopyable.hpp
 -
 boost/shared_ptr.hpp
@@ -27,4 +35,28 @@ string
 -
 pthread.h
 -
+
+src/base/Timer.h
+set
+-
+vector
+-
+base/Timestamp.h
+-
+base/TypedefCallback.h
+-
+boost/noncopyable.hpp
+-
+
+src/base/Timestamp.h
+base/copyable.h
+-
+boost/operators.hpp
+-
+
+src/base/TypedefCallback.h
+boost/function.hpp
+-
+
+src/base/copyable.h
 

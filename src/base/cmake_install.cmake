@@ -38,9 +38,16 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/scnet2/base" TYPE FILE FILES
-    "/home/jmchen/work/scnet2/src/base/Thread.hpp"
-    "/home/jmchen/work/scnet2/src/base/CurrentThread.hpp"
-    "/home/jmchen/work/scnet2/src/base/BaseLoop.hpp"
+    "/home/jmchen/work/scnet2/src/base/copyable.h"
+    "/home/jmchen/work/scnet2/src/base/AtomicInt.h"
+    "/home/jmchen/work/scnet2/src/base/Time.h"
+    "/home/jmchen/work/scnet2/src/base/TypedefCallback.h"
+    "/home/jmchen/work/scnet2/src/base/BaseLoop.h"
+    "/home/jmchen/work/scnet2/src/base/CurrentThread.h"
+    "/home/jmchen/work/scnet2/src/base/Timestamp.h"
+    "/home/jmchen/work/scnet2/src/base/Timer.h"
+    "/home/jmchen/work/scnet2/src/base/Channel.h"
+    "/home/jmchen/work/scnet2/src/base/Thread.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

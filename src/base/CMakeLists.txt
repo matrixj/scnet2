@@ -1,6 +1,10 @@
 set(base_SRCS
     BaseLoop.cpp
     Thread.cpp
+    Timer.cpp
+    Time.cpp
+    Timestamp.cpp
+    Channel.cpp
     )
 
 add_library(scnet2_base ${base_SRCS})

@@ -1,5 +1,5 @@
-#include <base/Thread.hpp>
-#include <base/BaseLoop.hpp>
+#include <base/Thread.h>
+#include <base/BaseLoop.h>
 
 using namespace scnet2;
 using namespace scnet2::base;

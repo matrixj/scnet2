@@ -3,5 +3,9 @@
 
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cpp.o
  /home/jmchen/work/scnet2/src/base/tests/BaseLoopAndThread.cpp
- src/base/BaseLoop.hpp
- src/base/Thread.hpp
+ src/base/BaseLoop.h
+ src/base/Thread.h
+ src/base/Timer.h
+ src/base/Timestamp.h
+ src/base/TypedefCallback.h
+ src/base/copyable.h

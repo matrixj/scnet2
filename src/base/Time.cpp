@@ -1,4 +1,6 @@
 #include <base/Time.h>
+#include <base/Timestamp.h>
+#include <base/AtomicInt.h>
 
 using namespace scnet2;
 using namespace scnet2::base;
@@ -14,3 +16,15 @@ void Time::restart(Timestamp ts)
         _expiration = Timestamp::invalid();
     }
 }
+
+TimerId::TimerId(const Timer& timer, const int64_t id)
+    :_timer(timer),
+     _id(id)
+{ }
+TimerId::TimerId()
+  : _timer(NULL),
+    _id(id)
+    { }
+
+TimerId::~TimerId()
+{ }
