@@ -7,7 +7,9 @@
 
 namespace scnet2 {
 namespace base {
+
 class BaseLoop;
+
 class Channel : boost::noncopyable {
  public:
   typedef boost::function<void ()> Callback;
@@ -24,6 +26,19 @@ class Channel : boost::noncopyable {
   }
   void setErrorCb(const Callback& cb) {
     _errorCb = cb;
+  }
+
+  void setNoneCb() {
+    _noneCb = true;
+    updatePoller();
+  }
+
+  bool isNonCb() {
+    return _noneCb;
+  }
+
+  void setFd(int tmp_fd) {
+    _fd = tmp_fd;
   }
 
   int fd() {
@@ -55,9 +70,20 @@ class Channel : boost::noncopyable {
     _revents = revents;
   }
 
+  void setIndex(int idx) {
+    _idx = idx;
+  }
+
+  int index() {
+    return _idx;
+  }
+
+  
+  void handleEvent();
+
   private:
-   const int RDEVT;
-   const int WRTEVT;
+   static const int RDEVT;
+   static const int WRTEVT;
 
    void updatePoller();
 
@@ -68,10 +94,13 @@ class Channel : boost::noncopyable {
    BaseLoop *_loop;
    boost::weak_ptr<void> _tie;
    int _fd;
-   int _events;
+   int  _events;
    int _revents;
    bool _eventHandling;
    bool _tied;
+
+   int _idx;
+   bool _noneCb;
 };
 
 }

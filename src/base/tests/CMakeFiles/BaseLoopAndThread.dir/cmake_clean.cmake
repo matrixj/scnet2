@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cpp.o"
+  "CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o"
   "BaseLoopAndThread.pdb"
   "BaseLoopAndThread"
 )

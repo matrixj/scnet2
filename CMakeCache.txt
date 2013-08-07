@@ -17,6 +17,9 @@
 //Path to a library.
 BOOSTTEST_LIBRARY:FILEPATH=BOOSTTEST_LIBRARY-NOTFOUND
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/include
 
@@ -71,6 +74,9 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/home/jmchen/work/build/debug-install
 
@@ -104,6 +110,9 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 //Path to a program.
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
+//Value Computed by CMake
+CMAKE_PROJECT_NAME:STATIC=scnet2
+
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
 
@@ -121,6 +130,10 @@ CMAKE_SHARED_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO:STRING=
+
+//If set, runtime paths are not added when installing shared libraries,
+// but are added when building.
+CMAKE_SKIP_INSTALL_RPATH:BOOL=NO
 
 //If set, runtime paths are not added when using shared libraries.
 CMAKE_SKIP_RPATH:BOOL=NO
@@ -146,34 +159,41 @@ scnet2_SOURCE_DIR:STATIC=/home/jmchen/work/scnet2
 //Dependencies for the target
 scnet2_base_LIB_DEPENDS:STATIC=general;pthread;
 
+//Dependencies for the target
+scnet2_net_LIB_DEPENDS:STATIC=general;pthread;
+
 
 ########################
 # INTERNAL cache entries
 ########################
 
-//Advanced flag for variable: Boost_INCLUDE_DIR
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_INCLUDE_DIR
 Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//Advanced flag for variable: Boost_LIBRARY_DIRS
+//ADVANCED property for variable: Boost_LIBRARY_DIRS
 Boost_LIBRARY_DIRS-ADVANCED:INTERNAL=1
 //The library version string for boost libraries
 Boost_LIB_VERSION:INTERNAL=1_41
 //The version number for boost libraries
 Boost_VERSION:INTERNAL=104100
-//Advanced flag for variable: CMAKE_AR
+//ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_BUILD_TOOL
+//ADVANCED property for variable: CMAKE_BUILD_TOOL
 CMAKE_BUILD_TOOL-ADVANCED:INTERNAL=1
 //What is the target build tool cmake is generating for.
 CMAKE_BUILD_TOOL:INTERNAL=/usr/bin/gmake
-//This is the directory where this CMakeCahe.txt was created
+//This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/home/jmchen/work/scnet2
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=2
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=6
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=8
+//Patch version of cmake used to create the current loaded cache
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=11
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_RELEASE_VERSION:INTERNAL=patch 4
-//Advanced flag for variable: CMAKE_COLOR_MAKEFILE
+//ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
 CMAKE_COMMAND:INTERNAL=/usr/bin/cmake
@@ -181,18 +201,17 @@ CMAKE_COMMAND:INTERNAL=/usr/bin/cmake
 CMAKE_CPACK_COMMAND:INTERNAL=/usr/bin/cpack
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=/usr/bin/ctest
-//Advanced flag for variable: CMAKE_CXX_COMPILER
+//ADVANCED property for variable: CMAKE_CXX_COMPILER
 CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
-CMAKE_CXX_COMPILER_WORKS:INTERNAL=1
-//Advanced flag for variable: CMAKE_CXX_FLAGS
+//ADVANCED property for variable: CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_CXX_FLAGS_DEBUG
+//ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
 CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_CXX_FLAGS_MINSIZEREL
+//ADVANCED property for variable: CMAKE_CXX_FLAGS_MINSIZEREL
 CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_CXX_FLAGS_RELEASE
+//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELEASE
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
+//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //Result of TRY_COMPILE
 CMAKE_DETERMINE_CXX_ABI_COMPILED:INTERNAL=TRUE
@@ -200,67 +219,79 @@ CMAKE_DETERMINE_CXX_ABI_COMPILED:INTERNAL=TRUE
 CMAKE_EDIT_COMMAND:INTERNAL=/usr/bin/ccmake
 //Executable file format
 CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
-//Advanced flag for variable: CMAKE_EXE_LINKER_FLAGS
+//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
 CMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
+//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG
 CMAKE_EXE_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_EXE_LINKER_FLAGS_MINSIZEREL
+//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_MINSIZEREL
 CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_EXE_LINKER_FLAGS_RELEASE
+//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELEASE
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
+//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of generator.
 CMAKE_GENERATOR:INTERNAL=Unix Makefiles
+//Name of generator toolset.
+CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Start directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/jmchen/work/scnet2
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
-//Advanced flag for variable: CMAKE_LINKER
+//ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_MAKE_PROGRAM
+//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
 CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_MODULE_LINKER_FLAGS
+//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
+//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
 CMAKE_MODULE_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL
+//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL
 CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_MODULE_LINKER_FLAGS_RELEASE
+//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELEASE
 CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
+//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_NM
+//ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
 CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=4
-//Advanced flag for variable: CMAKE_OBJCOPY
+//ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_OBJDUMP
+//ADVANCED property for variable: CMAKE_OBJDUMP
 CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_RANLIB
+//ADVANCED property for variable: CMAKE_RANLIB
 CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //Path to CMake installation.
 CMAKE_ROOT:INTERNAL=/usr/share/cmake
-//Advanced flag for variable: CMAKE_SHARED_LINKER_FLAGS
+//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
+//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
 CMAKE_SHARED_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL
+//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL
 CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_SHARED_LINKER_FLAGS_RELEASE
+//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELEASE
 CMAKE_SHARED_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO
+//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_SKIP_RPATH
+//ADVANCED property for variable: CMAKE_SKIP_INSTALL_RPATH
+CMAKE_SKIP_INSTALL_RPATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_SKIP_RPATH
 CMAKE_SKIP_RPATH-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_STRIP
+//ADVANCED property for variable: CMAKE_STRIP
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //uname command
 CMAKE_UNAME:INTERNAL=/bin/uname
-//Advanced flag for variable: CMAKE_USE_RELATIVE_PATHS
+//ADVANCED property for variable: CMAKE_USE_RELATIVE_PATHS
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
-//Advanced flag for variable: CMAKE_VERBOSE_MAKEFILE
+//ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Components requested for this build tree.
+_Boost_COMPONENTS_SEARCHED:INTERNAL=
+//Last used Boost_INCLUDE_DIR value.
+_Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
+//Last used Boost_USE_MULTITHREADED value.
+_Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
 

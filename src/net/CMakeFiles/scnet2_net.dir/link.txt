@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../../lib/libscnet2_net.a  CMakeFiles/scnet2_net.dir/poller.cc.o CMakeFiles/scnet2_net.dir/epoller.cc.o
+/usr/bin/ranlib ../../lib/libscnet2_net.a

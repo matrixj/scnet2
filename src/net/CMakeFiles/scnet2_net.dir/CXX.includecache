@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jmchen/work/scnet2/src/net/epoller.cc
+net/epoller.h
+-
+vector
+-
+stdio.h
+-
+poll.h
+-
+sys/epoll.h
+-
+base/Channel.h
+-
+base/types.h
+-
+
+/home/jmchen/work/scnet2/src/net/poller.cc
+net/poller.h
+-
+net/epoller.h
+-
+base/BaseLoop.h
+-
+

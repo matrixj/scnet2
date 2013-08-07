@@ -18,6 +18,8 @@ class Timestamp : public scnet2::copyable,
 
         */
         //string toString() const;
+
+        Timestamp();
         int64_t microSecondsSinceEpoch() const {
             return _microSecondsSinceEpoch;
         }
@@ -25,7 +27,7 @@ class Timestamp : public scnet2::copyable,
         static Timestamp now();
         static Timestamp invalid();
 
-        static const int microSecondsPersecond ;
+        static const int microSecondsPersecond = 1000000;
     private:
         int64_t _microSecondsSinceEpoch;
 };

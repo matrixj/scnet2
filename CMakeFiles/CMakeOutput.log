@@ -44,3 +44,4 @@ Linking CXX executable cmTryCompileExec
 gmake[1]: Leaving directory `/home/jmchen/work/scnet2/CMakeFiles/CMakeTmp'
 
 
+The system is: Linux - 3.9.5-301.fc19.x86_64 - x86_64

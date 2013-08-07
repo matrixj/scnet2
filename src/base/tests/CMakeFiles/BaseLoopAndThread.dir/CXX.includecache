@@ -6,22 +6,40 @@
 
 #IncludeRegexTransform: 
 
-/home/jmchen/work/scnet2/src/base/tests/BaseLoopAndThread.cpp
+/home/jmchen/work/scnet2/src/base/tests/BaseLoopAndThread.cc
 base/Thread.h
 -
 base/BaseLoop.h
 -
 
+src/base/AtomicInt.h
+boost/noncopyable.hpp
+-
+stdint.h
+-
+
 src/base/BaseLoop.h
+boost/noncopyable.hpp
+-
+boost/scoped_ptr.hpp
+-
+boost/function.hpp
+-
 base/Timer.h
 -
 base/Timestamp.h
 -
 base/TypedefCallback.h
 -
+base/Thread.h
+-
+
+src/base/Channel.h
 boost/noncopyable.hpp
 -
-boost/scoped_ptr.hpp
+boost/function.hpp
+-
+boost/weak_ptr.hpp
 -
 
 src/base/Thread.h
@@ -36,14 +54,28 @@ string
 pthread.h
 -
 
+src/base/Time.h
+base/TypedefCallback.h
+-
+base/AtomicInt.h
+-
+base/Timestamp.h
+-
+boost/noncopyable.hpp
+-
+
 src/base/Timer.h
 set
 -
 vector
 -
+base/Time.h
+-
 base/Timestamp.h
 -
 base/TypedefCallback.h
+-
+base/Channel.h
 -
 boost/noncopyable.hpp
 -

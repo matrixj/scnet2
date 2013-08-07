@@ -14,6 +14,7 @@ class Time;
 class TimerId : scnet2::copyable {
     public:
         TimerId(Time *timer, int64_t id);
+        TimerId();
         ~TimerId();
         friend class Timer;
     private:

@@ -4,15 +4,22 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jmchen/work/scnet2/src/base/BaseLoop.cpp" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cpp.o"
-  "/home/jmchen/work/scnet2/src/base/Channel.cpp" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Channel.cpp.o"
-  "/home/jmchen/work/scnet2/src/base/Thread.cpp" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Thread.cpp.o"
-  "/home/jmchen/work/scnet2/src/base/Time.cpp" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Time.cpp.o"
-  "/home/jmchen/work/scnet2/src/base/Timer.cpp" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Timer.cpp.o"
-  "/home/jmchen/work/scnet2/src/base/Timestamp.cpp" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Timestamp.cpp.o"
+  "/home/jmchen/work/scnet2/src/base/BaseLoop.cc" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o"
+  "/home/jmchen/work/scnet2/src/base/Channel.cc" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Channel.cc.o"
+  "/home/jmchen/work/scnet2/src/base/Thread.cc" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o"
+  "/home/jmchen/work/scnet2/src/base/Time.cc" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Time.cc.o"
+  "/home/jmchen/work/scnet2/src/base/Timer.cc" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o"
+  "/home/jmchen/work/scnet2/src/base/Timestamp.cc" "/home/jmchen/work/scnet2/src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.o"
   )
-SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   )
+
+# The include file search paths:
+SET(CMAKE_C_TARGET_INCLUDE_PATH
+  "src"
+  )
+SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
