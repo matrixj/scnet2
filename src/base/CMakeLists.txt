@@ -5,6 +5,9 @@ set(base_SRCS
     Time.cc
     Timestamp.cc
     Channel.cc
+    logbuffer.cc
+    logger.cc
+    condition.cc
     )
 
 add_library(scnet2_base ${base_SRCS})
