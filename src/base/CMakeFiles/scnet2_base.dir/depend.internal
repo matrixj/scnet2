@@ -7,28 +7,28 @@ src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o
  src/base/BaseLoop.h
  src/base/Channel.h
  src/base/CurrentThread.h
- src/base/Thread.h
  src/base/Time.h
  src/base/Timer.h
  src/base/Timestamp.h
  src/base/TypedefCallback.h
  src/base/copyable.h
+ src/base/thread.h
  src/net/poller.h
 src/base/CMakeFiles/scnet2_base.dir/Channel.cc.o
  /home/jmchen/work/scnet2/src/base/Channel.cc
  src/base/AtomicInt.h
  src/base/BaseLoop.h
  src/base/Channel.h
- src/base/Thread.h
  src/base/Time.h
  src/base/Timer.h
  src/base/Timestamp.h
  src/base/TypedefCallback.h
  src/base/copyable.h
+ src/base/thread.h
 src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o
  /home/jmchen/work/scnet2/src/base/Thread.cc
  src/base/CurrentThread.h
- src/base/Thread.h
+ src/base/thread.h
 src/base/CMakeFiles/scnet2_base.dir/Time.cc.o
  /home/jmchen/work/scnet2/src/base/Time.cc
  src/base/AtomicInt.h
@@ -43,12 +43,12 @@ src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o
  src/base/AtomicInt.h
  src/base/BaseLoop.h
  src/base/Channel.h
- src/base/Thread.h
  src/base/Time.h
  src/base/Timer.h
  src/base/Timestamp.h
  src/base/TypedefCallback.h
  src/base/copyable.h
+ src/base/thread.h
 src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.o
  /home/jmchen/work/scnet2/src/base/Timestamp.cc
  src/base/Timestamp.h
@@ -57,14 +57,20 @@ src/base/CMakeFiles/scnet2_base.dir/condition.cc.o
  /home/jmchen/work/scnet2/src/base/condition.cc
  src/base/condition.h
  src/base/mutexlock.h
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o
+ /home/jmchen/work/scnet2/src/base/countdown_latch.cc
+ src/base/condition.h
+ src/base/countdown_latch.h
+ src/base/mutexlock.h
 src/base/CMakeFiles/scnet2_base.dir/logbuffer.cc.o
  /home/jmchen/work/scnet2/src/base/logbuffer.cc
- src/base/Thread.h
  src/base/buffer.h
  src/base/condition.h
+ src/base/countdown_latch.h
  src/base/logbuffer.h
  src/base/logger.h
  src/base/mutexlock.h
+ src/base/thread.h
 src/base/CMakeFiles/scnet2_base.dir/logger.cc.o
  /home/jmchen/work/scnet2/src/base/logger.cc
  src/base/logger.h

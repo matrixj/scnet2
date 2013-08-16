@@ -41,5 +41,6 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 SET(CMAKE_DEPEND_INFO_FILES
   "src/base/CMakeFiles/scnet2_base.dir/DependInfo.cmake"
   "src/base/tests/CMakeFiles/BaseLoopAndThread.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/Logger.dir/DependInfo.cmake"
   "src/net/CMakeFiles/scnet2_net.dir/DependInfo.cmake"
   )

@@ -13,7 +13,7 @@
 #include <base/Timestamp.h>
 #include <base/Channel.h>
 #include <base/CurrentThread.h>
-#include <base/Thread.h>
+#include <base/thread.h>
 #include <net/poller.h>
 
 

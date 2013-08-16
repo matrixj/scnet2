@@ -7,6 +7,11 @@
 #include <base/condition.h>
 #include <base/buffer.h>
 #include <base/logger.h>
+#include <base/countdown_latch.h>
+
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 using namespace scnet2;
 
@@ -16,7 +21,9 @@ LogBuffer::LogBuffer(std::string& basename)
     _next(new BufferType),
     _thread(boost::bind(&LogBuffer::threadFunc, this), "BGLogThread"),
     _basename(basename),
-    _cond(_lock) {
+    _lock(),
+    _cond(_lock),
+    latch_(1) {
       _current->bzero();
       _next->bzero();
       _bufferVector.reserve(16);
@@ -24,7 +31,7 @@ LogBuffer::LogBuffer(std::string& basename)
 void LogBuffer::appendToBuffer(const char *str, int len) {
   //TODO:Add mutex lock here;
   {
-    MutexLockGurad lock(_lock);
+    MutexLockGuard lock(_lock);
     if (len < static_cast<int>(_current->avaliable())) {
       _current->append(str, len);
     } else {
@@ -42,6 +49,8 @@ void LogBuffer::appendToBuffer(const char *str, int len) {
 }
 
 void LogBuffer::threadFunc() {
+  assert(_logging);
+  latch_.countDown();
   Logger out(_basename);
   VecTypePtr buffer1(new BufferType);
   VecTypePtr buffer2(new BufferType);
@@ -53,19 +62,21 @@ void LogBuffer::threadFunc() {
 
   while(_logging) {
     {
-    MutexLockGurad lock(_lock);
-    if (_bufferVector.empty()) {
-      _cond.timedwait(kCondWaitInterval);
-    }
-    _bufferVector.push_back(_current.release());
-    _bufferVector.clear();
-    _current = boost::ptr_container::move(buffer1);
-    buffersToWriteToFile.swap(_bufferVector);
+      MutexLockGuard lock(_lock);
+      if (_bufferVector.empty()) {
+        _cond.timedwait(kCondWaitInterval);
+      }
+      _bufferVector.clear();
+      _bufferVector.push_back(_current.release());
+      _current = boost::ptr_container::move(buffer1);
+      buffersToWriteToFile.swap(_bufferVector);
 
-    if (!_next) {
-      _next = boost::ptr_container::move(buffer2);
+      if (!_next) {
+        _next = boost::ptr_container::move(buffer2);
+      }
     }
-    }
+
+    //std::cout<<buffersToWriteToFile.size()<<std::endl;
 
     for (size_t i = 0; i < buffersToWriteToFile.size(); i++) {
       out.append(buffersToWriteToFile[i].data(), buffersToWriteToFile[i].len());

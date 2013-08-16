@@ -153,6 +153,20 @@ BaseLoopAndThread/fast:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build
 .PHONY : BaseLoopAndThread/fast
 
+# Convenience name for target.
+src/base/tests/CMakeFiles/Logger.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/Logger.dir/rule
+.PHONY : src/base/tests/CMakeFiles/Logger.dir/rule
+
+# Convenience name for target.
+Logger: src/base/tests/CMakeFiles/Logger.dir/rule
+.PHONY : Logger
+
+# fast build rule for target.
+Logger/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/build
+.PHONY : Logger/fast
+
 BaseLoopAndThread.o: BaseLoopAndThread.cc.o
 .PHONY : BaseLoopAndThread.o
 
@@ -177,6 +191,30 @@ BaseLoopAndThread.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.s
 .PHONY : BaseLoopAndThread.cc.s
 
+Logger.o: Logger.cc.o
+.PHONY : Logger.o
+
+# target to build an object file
+Logger.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/Logger.cc.o
+.PHONY : Logger.cc.o
+
+Logger.i: Logger.cc.i
+.PHONY : Logger.i
+
+# target to preprocess a source file
+Logger.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/Logger.cc.i
+.PHONY : Logger.cc.i
+
+Logger.s: Logger.cc.s
+.PHONY : Logger.s
+
+# target to generate assembly for a file
+Logger.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/Logger.cc.s
+.PHONY : Logger.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -184,6 +222,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... BaseLoopAndThread"
+	@echo "... Logger"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -193,6 +232,9 @@ help:
 	@echo "... BaseLoopAndThread.o"
 	@echo "... BaseLoopAndThread.i"
 	@echo "... BaseLoopAndThread.s"
+	@echo "... Logger.o"
+	@echo "... Logger.i"
+	@echo "... Logger.s"
 .PHONY : help
 
 

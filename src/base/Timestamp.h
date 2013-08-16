@@ -43,6 +43,11 @@ inline Timestamp addTime(Timestamp ts, double s) {
   int64_t t = static_cast<int64_t>(s * Timestamp::microSecondsPersecond);
   return Timestamp(ts.microSecondsSinceEpoch() + t);
 }
+
+inline int64_t timestampDifference(Timestamp& end, Timestamp& begin) {
+  return end.microSecondsSinceEpoch() - begin.microSecondsSinceEpoch();
+}
+
 }
 
 

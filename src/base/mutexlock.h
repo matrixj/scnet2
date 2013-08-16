@@ -50,15 +50,15 @@ class MutexLock : boost::noncopyable {
   }
 };
 
-class MutexLockGurad : boost::noncopyable {
+class MutexLockGuard : boost::noncopyable {
  private:
   friend class Condition;
   MutexLock& _lock;
  public:
-  MutexLockGurad(MutexLock& lock) : _lock(lock) {
+  MutexLockGuard(MutexLock& lock) : _lock(lock) {
     _lock.lock();
   }
-  ~MutexLockGurad() {_lock.unlock();}
+  ~MutexLockGuard() { _lock.unlock(); }
 };
 
 }

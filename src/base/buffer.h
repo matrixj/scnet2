@@ -13,16 +13,13 @@ class Buffer : boost::noncopyable {
   Buffer()
       :_start(_data),
        _begin(_start),
-       _end(_data + SIZE){
+       _end(_data + SIZE) { }
 
-  }
-
-  ~Buffer() {
-  }
+  ~Buffer() { }
 
   void append(const char *str, int length) {
     memcpy(_begin, str, length);
-    _start += length;
+    _begin += length;
   }
 
   void bzero() {

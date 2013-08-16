@@ -76,7 +76,7 @@ src/base/preinstall: src/base/tests/preinstall
 src/base/CMakeFiles/scnet2_base.dir/all:
 	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/depend
 	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  1 2 3 4 5 6 7 8 9
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  1 2 3 4 5 6 7 8 9 10
 	@echo "Built target scnet2_base"
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/all
 
@@ -86,7 +86,7 @@ all: src/base/CMakeFiles/scnet2_base.dir/all
 
 # Build rule for subdir invocation for target.
 src/base/CMakeFiles/scnet2_base.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 src/base/CMakeFiles/scnet2_base.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 0
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/rule
@@ -109,10 +109,12 @@ clean: src/base/CMakeFiles/scnet2_base.dir/clean
 
 # Convenience name for "all" pass in the directory.
 src/base/tests/all: src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
+src/base/tests/all: src/base/tests/CMakeFiles/Logger.dir/all
 .PHONY : src/base/tests/all
 
 # Convenience name for "clean" pass in the directory.
 src/base/tests/clean: src/base/tests/CMakeFiles/BaseLoopAndThread.dir/clean
+src/base/tests/clean: src/base/tests/CMakeFiles/Logger.dir/clean
 .PHONY : src/base/tests/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -127,7 +129,7 @@ src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all: src/base/CMakeFiles/scnet2_
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all: src/net/CMakeFiles/scnet2_net.dir/all
 	$(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/depend
 	$(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  11
 	@echo "Built target BaseLoopAndThread"
 .PHONY : src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
 
@@ -137,7 +139,7 @@ all: src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
 
 # Build rule for subdir invocation for target.
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 0
 .PHONY : src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule
@@ -153,6 +155,42 @@ src/base/tests/CMakeFiles/BaseLoopAndThread.dir/clean:
 
 # clean rule for target.
 clean: src/base/tests/CMakeFiles/BaseLoopAndThread.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target src/base/tests/CMakeFiles/Logger.dir
+
+# All Build rule for target.
+src/base/tests/CMakeFiles/Logger.dir/all: src/base/CMakeFiles/scnet2_base.dir/all
+src/base/tests/CMakeFiles/Logger.dir/all: src/net/CMakeFiles/scnet2_net.dir/all
+	$(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/depend
+	$(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  12
+	@echo "Built target Logger"
+.PHONY : src/base/tests/CMakeFiles/Logger.dir/all
+
+# Include target in all.
+all: src/base/tests/CMakeFiles/Logger.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/base/tests/CMakeFiles/Logger.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 13
+	$(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/Logger.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jmchen/work/scnet2/CMakeFiles 0
+.PHONY : src/base/tests/CMakeFiles/Logger.dir/rule
+
+# Convenience name for target.
+Logger: src/base/tests/CMakeFiles/Logger.dir/rule
+.PHONY : Logger
+
+# clean rule for target.
+src/base/tests/CMakeFiles/Logger.dir/clean:
+	$(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/clean
+.PHONY : src/base/tests/CMakeFiles/Logger.dir/clean
+
+# clean rule for target.
+clean: src/base/tests/CMakeFiles/Logger.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -177,7 +215,7 @@ src/net/preinstall:
 src/net/CMakeFiles/scnet2_net.dir/all:
 	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/depend
 	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  11 12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles  13 14
 	@echo "Built target scnet2_net"
 .PHONY : src/net/CMakeFiles/scnet2_net.dir/all
 

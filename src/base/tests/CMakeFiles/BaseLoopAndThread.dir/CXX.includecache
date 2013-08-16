@@ -7,7 +7,7 @@
 #IncludeRegexTransform: 
 
 /home/jmchen/work/scnet2/src/base/tests/BaseLoopAndThread.cc
-base/Thread.h
+base/thread.h
 -
 base/BaseLoop.h
 -
@@ -31,7 +31,7 @@ base/Timestamp.h
 -
 base/TypedefCallback.h
 -
-base/Thread.h
+base/thread.h
 -
 
 src/base/Channel.h
@@ -40,18 +40,6 @@ boost/noncopyable.hpp
 boost/function.hpp
 -
 boost/weak_ptr.hpp
--
-
-src/base/Thread.h
-boost/noncopyable.hpp
--
-boost/shared_ptr.hpp
--
-boost/function.hpp
--
-string
--
-pthread.h
 -
 
 src/base/Time.h
@@ -91,4 +79,16 @@ boost/function.hpp
 -
 
 src/base/copyable.h
+
+src/base/thread.h
+boost/noncopyable.hpp
+-
+boost/shared_ptr.hpp
+-
+boost/function.hpp
+-
+string
+-
+pthread.h
+-
 

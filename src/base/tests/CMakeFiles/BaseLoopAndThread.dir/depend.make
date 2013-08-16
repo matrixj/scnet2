@@ -5,10 +5,10 @@ src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/AtomicInt.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/BaseLoop.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/Channel.h
-src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/Thread.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/Time.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/Timer.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/Timestamp.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/TypedefCallback.h
 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/copyable.h
+src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o: src/base/thread.h
 

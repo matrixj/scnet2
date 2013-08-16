@@ -24,7 +24,8 @@ const int ADDED = 2;
 Epoller::Epoller(BaseLoop *loop)
   : Poller(loop),
      _loop(loop), 
-    _epollfd(::epoll_create1(EPOLL_CLOEXEC)) {
+    _epollfd(::epoll_create1(EPOLL_CLOEXEC)),
+    _events(64) {
       if (_epollfd < 0) {
         perror("epoll_create");
       }
@@ -32,7 +33,7 @@ Epoller::Epoller(BaseLoop *loop)
 Epoller::~Epoller() { ::close(_epollfd); }
 
 Timestamp Epoller::wait(int timeout, std::vector<Channel*> *channels) {
-  int n = ::epoll_wait(_epollfd, &*_events.begin(),
+  int n = ::epoll_wait(_epollfd, &(*_events.begin()),
             static_cast<int>(_events.size()), timeout);
   if (n > 0) {
     padChannels(n, channels);

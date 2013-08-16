@@ -157,7 +157,7 @@ scnet2_BINARY_DIR:STATIC=/home/jmchen/work/scnet2
 scnet2_SOURCE_DIR:STATIC=/home/jmchen/work/scnet2
 
 //Dependencies for the target
-scnet2_base_LIB_DEPENDS:STATIC=general;pthread;
+scnet2_base_LIB_DEPENDS:STATIC=general;pthread;general;rt;
 
 //Dependencies for the target
 scnet2_net_LIB_DEPENDS:STATIC=general;pthread;

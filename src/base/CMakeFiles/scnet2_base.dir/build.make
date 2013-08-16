@@ -265,6 +265,30 @@ src/base/CMakeFiles/scnet2_base.dir/condition.cc.o.provides: src/base/CMakeFiles
 src/base/CMakeFiles/scnet2_base.dir/condition.cc.o.provides.build: src/base/CMakeFiles/scnet2_base.dir/condition.cc.o
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/condition.cc.o.provides.build
 
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o: src/base/CMakeFiles/scnet2_base.dir/flags.make
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o: src/base/countdown_latch.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o"
+	cd /home/jmchen/work/scnet2/src/base && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_base.dir/countdown_latch.cc.o -c /home/jmchen/work/scnet2/src/base/countdown_latch.cc
+
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_base.dir/countdown_latch.cc.i"
+	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/base/countdown_latch.cc > CMakeFiles/scnet2_base.dir/countdown_latch.cc.i
+
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_base.dir/countdown_latch.cc.s"
+	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/base/countdown_latch.cc -o CMakeFiles/scnet2_base.dir/countdown_latch.cc.s
+
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.requires:
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.requires
+
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.provides: src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.requires
+	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.provides.build
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.provides
+
+src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.provides.build: src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.provides.build
+
 # Object files for target scnet2_base
 scnet2_base_OBJECTS = \
 "CMakeFiles/scnet2_base.dir/BaseLoop.cc.o" \
@@ -275,7 +299,8 @@ scnet2_base_OBJECTS = \
 "CMakeFiles/scnet2_base.dir/Channel.cc.o" \
 "CMakeFiles/scnet2_base.dir/logbuffer.cc.o" \
 "CMakeFiles/scnet2_base.dir/logger.cc.o" \
-"CMakeFiles/scnet2_base.dir/condition.cc.o"
+"CMakeFiles/scnet2_base.dir/condition.cc.o" \
+"CMakeFiles/scnet2_base.dir/countdown_latch.cc.o"
 
 # External object files for target scnet2_base
 scnet2_base_EXTERNAL_OBJECTS =
@@ -289,6 +314,7 @@ lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/Channel.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/logbuffer.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/logger.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/condition.cc.o
+lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/build.make
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library ../../lib/libscnet2_base.a"
@@ -308,6 +334,7 @@ src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.di
 src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/logbuffer.cc.o.requires
 src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/logger.cc.o.requires
 src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/condition.cc.o.requires
+src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.requires
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/requires
 
 src/base/CMakeFiles/scnet2_base.dir/clean:

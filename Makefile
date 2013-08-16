@@ -166,6 +166,19 @@ BaseLoopAndThread/fast:
 .PHONY : BaseLoopAndThread/fast
 
 #=============================================================================
+# Target rules for targets named Logger
+
+# Build rule for target.
+Logger: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Logger
+.PHONY : Logger
+
+# fast build rule for target.
+Logger/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/build
+.PHONY : Logger/fast
+
+#=============================================================================
 # Target rules for targets named scnet2_net
 
 # Build rule for target.
@@ -192,6 +205,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... scnet2_base"
 	@echo "... BaseLoopAndThread"
+	@echo "... Logger"
 	@echo "... scnet2_net"
 .PHONY : help
 

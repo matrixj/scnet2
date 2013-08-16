@@ -8,7 +8,7 @@
 #include <base/Timer.h>
 #include <base/Timestamp.h>
 #include <base/TypedefCallback.h>
-#include <base/Thread.h>
+#include <base/thread.h>
 
 namespace scnet2
 {

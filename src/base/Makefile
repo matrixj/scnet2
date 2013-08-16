@@ -321,6 +321,30 @@ condition.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/condition.cc.s
 .PHONY : condition.cc.s
 
+countdown_latch.o: countdown_latch.cc.o
+.PHONY : countdown_latch.o
+
+# target to build an object file
+countdown_latch.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o
+.PHONY : countdown_latch.cc.o
+
+countdown_latch.i: countdown_latch.cc.i
+.PHONY : countdown_latch.i
+
+# target to preprocess a source file
+countdown_latch.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.i
+.PHONY : countdown_latch.cc.i
+
+countdown_latch.s: countdown_latch.cc.s
+.PHONY : countdown_latch.s
+
+# target to generate assembly for a file
+countdown_latch.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.s
+.PHONY : countdown_latch.cc.s
+
 logbuffer.o: logbuffer.cc.o
 .PHONY : logbuffer.o
 
@@ -403,6 +427,9 @@ help:
 	@echo "... condition.o"
 	@echo "... condition.i"
 	@echo "... condition.s"
+	@echo "... countdown_latch.o"
+	@echo "... countdown_latch.i"
+	@echo "... countdown_latch.s"
 	@echo "... logbuffer.o"
 	@echo "... logbuffer.i"
 	@echo "... logbuffer.s"

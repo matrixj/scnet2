@@ -5,6 +5,10 @@
 #include <string.h>
 #include <sys/time.h>
 
+#ifdef DEBUG
+#include <iostream>
+#endif
+
 using namespace scnet2;
 using std::string;
 
@@ -67,14 +71,17 @@ string Logger::FilePtrHolder::getFileName(const string& basename) {
   struct tm t;
   localtime_r(&tt, &t);
   sprintf(subfix, 
-          "%04d-%02d-%02d:%02d:%02d::%llx.log",
-          t.tm_year + 1990,
-          t.tm_mon + 1, 
-          t.tm_mday,
+          "-lib-%02d:%02d::%llx.log.%04d%02d%02d",
           t.tm_hour,
           t.tm_min,
-          static_cast<long long unsigned int>(::getpid()));
+          static_cast<long long unsigned int>(::getpid()),
+           t.tm_year + 1990,
+          t.tm_mon + 1, 
+          t.tm_mday
+          );
   name += subfix;
+  std::cout<<name<<std::endl;
+  fflush(stdout);
   return name;
 }
 

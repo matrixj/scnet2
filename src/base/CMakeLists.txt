@@ -8,10 +8,11 @@ set(base_SRCS
     logbuffer.cc
     logger.cc
     condition.cc
+    countdown_latch.cc
     )
 
 add_library(scnet2_base ${base_SRCS})
-target_link_libraries(scnet2_base pthread)
+target_link_libraries(scnet2_base pthread rt)
 
 install(TARGETS scnet2_base DESTINATION lib)
 file(GLOB HEADERS "*.h")

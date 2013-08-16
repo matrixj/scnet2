@@ -44,6 +44,8 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/jmchen/work/scnet2/src/base/logbuffer.h"
     "/home/jmchen/work/scnet2/src/base/Time.h"
     "/home/jmchen/work/scnet2/src/base/TypedefCallback.h"
+    "/home/jmchen/work/scnet2/src/base/thread.h"
+    "/home/jmchen/work/scnet2/src/base/countdown_latch.h"
     "/home/jmchen/work/scnet2/src/base/mutexlock.h"
     "/home/jmchen/work/scnet2/src/base/buffer.h"
     "/home/jmchen/work/scnet2/src/base/BaseLoop.h"
@@ -54,7 +56,6 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/jmchen/work/scnet2/src/base/Timer.h"
     "/home/jmchen/work/scnet2/src/base/Channel.h"
     "/home/jmchen/work/scnet2/src/base/logger.h"
-    "/home/jmchen/work/scnet2/src/base/Thread.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

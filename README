@@ -11,4 +11,6 @@ The public interface is in src/base/*.h.Callers should not include or rely on th
 Guide to header files:
 
 src/base/BaseLoop.h
-    Main eventloop interface to the lib: Start here
+    Main eventloop interface to the lib: Start here;
+src/base/logbuffer.h
+    Log interface to the lib:if you want to log in your program;If you want to use it, look at  src/base/test/logger.cc for example;
