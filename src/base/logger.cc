@@ -1,13 +1,11 @@
 #include <base/logger.h>
+#include <base/CurrentThread.h>
+
 #include <string>
 
 #include <assert.h>
 #include <string.h>
 #include <sys/time.h>
-
-#ifdef DEBUG
-#include <iostream>
-#endif
 
 using namespace scnet2;
 using std::string;
@@ -70,8 +68,9 @@ string Logger::FilePtrHolder::getFileName(const string& basename) {
   time_t tt = now.tv_sec;
   struct tm t;
   localtime_r(&tt, &t);
+  /*
   sprintf(subfix, 
-          "-lib-%02d:%02d::%llx.log.%04d%02d%02d",
+          ".lib.%02d-%02d-%llx.log.%04d%02d%02d",
           t.tm_hour,
           t.tm_min,
           static_cast<long long unsigned int>(::getpid()),
@@ -79,8 +78,17 @@ string Logger::FilePtrHolder::getFileName(const string& basename) {
           t.tm_mon + 1, 
           t.tm_mday
           );
+  */
+  sprintf(subfix, 
+          ".lib.%02d-%02d.log.%d.%04d%02d%02d",
+          t.tm_hour,
+          t.tm_min,
+          CurrentThread::tid(),
+          t.tm_year + 1990,
+          t.tm_mon + 1, 
+          t.tm_mday
+          );
   name += subfix;
-  std::cout<<name<<std::endl;
   fflush(stdout);
   return name;
 }

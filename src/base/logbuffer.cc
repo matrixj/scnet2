@@ -16,7 +16,7 @@
 using namespace scnet2;
 
 LogBuffer::LogBuffer(std::string& basename)
-  : kCondWaitInterval(3),
+  : kCondWaitTime(3),
     _current(new BufferType),
     _next(new BufferType),
     _thread(boost::bind(&LogBuffer::threadFunc, this), "BGLogThread"),
@@ -29,7 +29,6 @@ LogBuffer::LogBuffer(std::string& basename)
       _bufferVector.reserve(16);
           }
 void LogBuffer::appendToBuffer(const char *str, int len) {
-  //TODO:Add mutex lock here;
   {
     MutexLockGuard lock(_lock);
     if (len < static_cast<int>(_current->avaliable())) {
@@ -43,13 +42,15 @@ void LogBuffer::appendToBuffer(const char *str, int len) {
       }
 
       _current->append(str, len);
-      _cond.signal();
     }
   }
+  _cond.signal();
 }
 
 void LogBuffer::threadFunc() {
   assert(_logging);
+
+  bool rc;
   latch_.countDown();
   Logger out(_basename);
   VecTypePtr buffer1(new BufferType);
@@ -62,10 +63,14 @@ void LogBuffer::threadFunc() {
 
   while(_logging) {
     {
+      assert(buffer1 && buffer1->len() == 0);
+      assert(buffer2 && buffer2->len() == 0);
+
       MutexLockGuard lock(_lock);
       if (_bufferVector.empty()) {
-        _cond.timedwait(kCondWaitInterval);
+        rc = _cond.timedwait(kCondWaitTime);
       }
+
       _bufferVector.clear();
       _bufferVector.push_back(_current.release());
       _current = boost::ptr_container::move(buffer1);
@@ -75,8 +80,6 @@ void LogBuffer::threadFunc() {
         _next = boost::ptr_container::move(buffer2);
       }
     }
-
-    //std::cout<<buffersToWriteToFile.size()<<std::endl;
 
     for (size_t i = 0; i < buffersToWriteToFile.size(); i++) {
       out.append(buffersToWriteToFile[i].data(), buffersToWriteToFile[i].len());

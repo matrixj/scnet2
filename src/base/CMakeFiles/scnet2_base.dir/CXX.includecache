@@ -111,7 +111,7 @@ stdio.h
 -
 time.h
 -
-string.h
+errno.h
 -
 
 /home/jmchen/work/scnet2/src/base/countdown_latch.cc
@@ -120,6 +120,10 @@ base/countdown_latch.h
 base/mutexlock.h
 -
 base/condition.h
+-
+stdio.h
+-
+string.h
 -
 
 /home/jmchen/work/scnet2/src/base/logbuffer.cc
@@ -145,6 +149,8 @@ iostream
 /home/jmchen/work/scnet2/src/base/logger.cc
 base/logger.h
 -
+base/CurrentThread.h
+-
 string
 -
 assert.h
@@ -152,8 +158,6 @@ assert.h
 string.h
 -
 sys/time.h
--
-iostream
 -
 
 src/base/AtomicInt.h
@@ -249,6 +253,8 @@ boost/noncopyable.hpp
 -
 boost/ptr_container/ptr_vector.hpp
 -
+stdio.h
+-
 base/mutexlock.h
 -
 base/condition.h
@@ -276,6 +282,8 @@ boost/scoped_ptr.hpp
 boost/noncopyable.hpp
 -
 pthread.h
+-
+base/CurrentThread.h
 -
 
 src/base/thread.h

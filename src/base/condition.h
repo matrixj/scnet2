@@ -29,7 +29,7 @@ class Condition : boost::noncopyable {
   }
 
   //use seconds
-  void timedwait(int  waittime);
+  bool timedwait(int  waittime);
 };
 }
 #endif

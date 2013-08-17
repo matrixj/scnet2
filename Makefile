@@ -153,30 +153,69 @@ scnet2_base/fast:
 .PHONY : scnet2_base/fast
 
 #=============================================================================
-# Target rules for targets named BaseLoopAndThread
+# Target rules for targets named baseandloop
 
 # Build rule for target.
-BaseLoopAndThread: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 BaseLoopAndThread
-.PHONY : BaseLoopAndThread
+baseandloop: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 baseandloop
+.PHONY : baseandloop
 
 # fast build rule for target.
-BaseLoopAndThread/fast:
-	$(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build
-.PHONY : BaseLoopAndThread/fast
+baseandloop/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/baseandloop.dir/build.make src/base/tests/CMakeFiles/baseandloop.dir/build
+.PHONY : baseandloop/fast
 
 #=============================================================================
-# Target rules for targets named Logger
+# Target rules for targets named condition
 
 # Build rule for target.
-Logger: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Logger
-.PHONY : Logger
+condition: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 condition
+.PHONY : condition
 
 # fast build rule for target.
-Logger/fast:
-	$(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/build
-.PHONY : Logger/fast
+condition/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/condition.dir/build.make src/base/tests/CMakeFiles/condition.dir/build
+.PHONY : condition/fast
+
+#=============================================================================
+# Target rules for targets named condition_timedwait_test
+
+# Build rule for target.
+condition_timedwait_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 condition_timedwait_test
+.PHONY : condition_timedwait_test
+
+# fast build rule for target.
+condition_timedwait_test/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/build
+.PHONY : condition_timedwait_test/fast
+
+#=============================================================================
+# Target rules for targets named logbuffer
+
+# Build rule for target.
+logbuffer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 logbuffer
+.PHONY : logbuffer
+
+# fast build rule for target.
+logbuffer/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/logbuffer.dir/build.make src/base/tests/CMakeFiles/logbuffer.dir/build
+.PHONY : logbuffer/fast
+
+#=============================================================================
+# Target rules for targets named writefile
+
+# Build rule for target.
+writefile: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 writefile
+.PHONY : writefile
+
+# fast build rule for target.
+writefile/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/writefile.dir/build.make src/base/tests/CMakeFiles/writefile.dir/build
+.PHONY : writefile/fast
 
 #=============================================================================
 # Target rules for targets named scnet2_net
@@ -204,8 +243,11 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... scnet2_base"
-	@echo "... BaseLoopAndThread"
-	@echo "... Logger"
+	@echo "... baseandloop"
+	@echo "... condition"
+	@echo "... condition_timedwait_test"
+	@echo "... logbuffer"
+	@echo "... writefile"
 	@echo "... scnet2_net"
 .PHONY : help
 

@@ -140,80 +140,194 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule
-.PHONY : src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule
+src/base/tests/CMakeFiles/baseandloop.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/baseandloop.dir/rule
+.PHONY : src/base/tests/CMakeFiles/baseandloop.dir/rule
 
 # Convenience name for target.
-BaseLoopAndThread: src/base/tests/CMakeFiles/BaseLoopAndThread.dir/rule
-.PHONY : BaseLoopAndThread
+baseandloop: src/base/tests/CMakeFiles/baseandloop.dir/rule
+.PHONY : baseandloop
 
 # fast build rule for target.
-BaseLoopAndThread/fast:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build
-.PHONY : BaseLoopAndThread/fast
+baseandloop/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/baseandloop.dir/build.make src/base/tests/CMakeFiles/baseandloop.dir/build
+.PHONY : baseandloop/fast
 
 # Convenience name for target.
-src/base/tests/CMakeFiles/Logger.dir/rule:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/Logger.dir/rule
-.PHONY : src/base/tests/CMakeFiles/Logger.dir/rule
+src/base/tests/CMakeFiles/condition.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/condition.dir/rule
+.PHONY : src/base/tests/CMakeFiles/condition.dir/rule
 
 # Convenience name for target.
-Logger: src/base/tests/CMakeFiles/Logger.dir/rule
-.PHONY : Logger
+condition: src/base/tests/CMakeFiles/condition.dir/rule
+.PHONY : condition
 
 # fast build rule for target.
-Logger/fast:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/build
-.PHONY : Logger/fast
+condition/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition.dir/build.make src/base/tests/CMakeFiles/condition.dir/build
+.PHONY : condition/fast
 
-BaseLoopAndThread.o: BaseLoopAndThread.cc.o
-.PHONY : BaseLoopAndThread.o
+# Convenience name for target.
+src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule
+.PHONY : src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule
+
+# Convenience name for target.
+condition_timedwait_test: src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule
+.PHONY : condition_timedwait_test
+
+# fast build rule for target.
+condition_timedwait_test/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/build
+.PHONY : condition_timedwait_test/fast
+
+# Convenience name for target.
+src/base/tests/CMakeFiles/logbuffer.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/logbuffer.dir/rule
+.PHONY : src/base/tests/CMakeFiles/logbuffer.dir/rule
+
+# Convenience name for target.
+logbuffer: src/base/tests/CMakeFiles/logbuffer.dir/rule
+.PHONY : logbuffer
+
+# fast build rule for target.
+logbuffer/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/logbuffer.dir/build.make src/base/tests/CMakeFiles/logbuffer.dir/build
+.PHONY : logbuffer/fast
+
+# Convenience name for target.
+src/base/tests/CMakeFiles/writefile.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/writefile.dir/rule
+.PHONY : src/base/tests/CMakeFiles/writefile.dir/rule
+
+# Convenience name for target.
+writefile: src/base/tests/CMakeFiles/writefile.dir/rule
+.PHONY : writefile
+
+# fast build rule for target.
+writefile/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/writefile.dir/build.make src/base/tests/CMakeFiles/writefile.dir/build
+.PHONY : writefile/fast
+
+baseandloop_test.o: baseandloop_test.cc.o
+.PHONY : baseandloop_test.o
 
 # target to build an object file
-BaseLoopAndThread.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o
-.PHONY : BaseLoopAndThread.cc.o
+baseandloop_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/baseandloop.dir/build.make src/base/tests/CMakeFiles/baseandloop.dir/baseandloop_test.cc.o
+.PHONY : baseandloop_test.cc.o
 
-BaseLoopAndThread.i: BaseLoopAndThread.cc.i
-.PHONY : BaseLoopAndThread.i
+baseandloop_test.i: baseandloop_test.cc.i
+.PHONY : baseandloop_test.i
 
 # target to preprocess a source file
-BaseLoopAndThread.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.i
-.PHONY : BaseLoopAndThread.cc.i
+baseandloop_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/baseandloop.dir/build.make src/base/tests/CMakeFiles/baseandloop.dir/baseandloop_test.cc.i
+.PHONY : baseandloop_test.cc.i
 
-BaseLoopAndThread.s: BaseLoopAndThread.cc.s
-.PHONY : BaseLoopAndThread.s
+baseandloop_test.s: baseandloop_test.cc.s
+.PHONY : baseandloop_test.s
 
 # target to generate assembly for a file
-BaseLoopAndThread.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/BaseLoopAndThread.dir/build.make src/base/tests/CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.s
-.PHONY : BaseLoopAndThread.cc.s
+baseandloop_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/baseandloop.dir/build.make src/base/tests/CMakeFiles/baseandloop.dir/baseandloop_test.cc.s
+.PHONY : baseandloop_test.cc.s
 
-Logger.o: Logger.cc.o
-.PHONY : Logger.o
+condition_test.o: condition_test.cc.o
+.PHONY : condition_test.o
 
 # target to build an object file
-Logger.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/Logger.cc.o
-.PHONY : Logger.cc.o
+condition_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition.dir/build.make src/base/tests/CMakeFiles/condition.dir/condition_test.cc.o
+.PHONY : condition_test.cc.o
 
-Logger.i: Logger.cc.i
-.PHONY : Logger.i
+condition_test.i: condition_test.cc.i
+.PHONY : condition_test.i
 
 # target to preprocess a source file
-Logger.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/Logger.cc.i
-.PHONY : Logger.cc.i
+condition_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition.dir/build.make src/base/tests/CMakeFiles/condition.dir/condition_test.cc.i
+.PHONY : condition_test.cc.i
 
-Logger.s: Logger.cc.s
-.PHONY : Logger.s
+condition_test.s: condition_test.cc.s
+.PHONY : condition_test.s
 
 # target to generate assembly for a file
-Logger.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/Logger.dir/build.make src/base/tests/CMakeFiles/Logger.dir/Logger.cc.s
-.PHONY : Logger.cc.s
+condition_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition.dir/build.make src/base/tests/CMakeFiles/condition.dir/condition_test.cc.s
+.PHONY : condition_test.cc.s
+
+condition_timedwait_test.o: condition_timedwait_test.cc.o
+.PHONY : condition_timedwait_test.o
+
+# target to build an object file
+condition_timedwait_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/condition_timedwait_test.cc.o
+.PHONY : condition_timedwait_test.cc.o
+
+condition_timedwait_test.i: condition_timedwait_test.cc.i
+.PHONY : condition_timedwait_test.i
+
+# target to preprocess a source file
+condition_timedwait_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/condition_timedwait_test.cc.i
+.PHONY : condition_timedwait_test.cc.i
+
+condition_timedwait_test.s: condition_timedwait_test.cc.s
+.PHONY : condition_timedwait_test.s
+
+# target to generate assembly for a file
+condition_timedwait_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/condition_timedwait_test.cc.s
+.PHONY : condition_timedwait_test.cc.s
+
+logbuffer_test.o: logbuffer_test.cc.o
+.PHONY : logbuffer_test.o
+
+# target to build an object file
+logbuffer_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/logbuffer.dir/build.make src/base/tests/CMakeFiles/logbuffer.dir/logbuffer_test.cc.o
+.PHONY : logbuffer_test.cc.o
+
+logbuffer_test.i: logbuffer_test.cc.i
+.PHONY : logbuffer_test.i
+
+# target to preprocess a source file
+logbuffer_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/logbuffer.dir/build.make src/base/tests/CMakeFiles/logbuffer.dir/logbuffer_test.cc.i
+.PHONY : logbuffer_test.cc.i
+
+logbuffer_test.s: logbuffer_test.cc.s
+.PHONY : logbuffer_test.s
+
+# target to generate assembly for a file
+logbuffer_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/logbuffer.dir/build.make src/base/tests/CMakeFiles/logbuffer.dir/logbuffer_test.cc.s
+.PHONY : logbuffer_test.cc.s
+
+writefile_test.o: writefile_test.cc.o
+.PHONY : writefile_test.o
+
+# target to build an object file
+writefile_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/writefile.dir/build.make src/base/tests/CMakeFiles/writefile.dir/writefile_test.cc.o
+.PHONY : writefile_test.cc.o
+
+writefile_test.i: writefile_test.cc.i
+.PHONY : writefile_test.i
+
+# target to preprocess a source file
+writefile_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/writefile.dir/build.make src/base/tests/CMakeFiles/writefile.dir/writefile_test.cc.i
+.PHONY : writefile_test.cc.i
+
+writefile_test.s: writefile_test.cc.s
+.PHONY : writefile_test.s
+
+# target to generate assembly for a file
+writefile_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/writefile.dir/build.make src/base/tests/CMakeFiles/writefile.dir/writefile_test.cc.s
+.PHONY : writefile_test.cc.s
 
 # Help Target
 help:
@@ -221,20 +335,32 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... BaseLoopAndThread"
-	@echo "... Logger"
+	@echo "... baseandloop"
+	@echo "... condition"
+	@echo "... condition_timedwait_test"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... logbuffer"
 	@echo "... rebuild_cache"
-	@echo "... BaseLoopAndThread.o"
-	@echo "... BaseLoopAndThread.i"
-	@echo "... BaseLoopAndThread.s"
-	@echo "... Logger.o"
-	@echo "... Logger.i"
-	@echo "... Logger.s"
+	@echo "... writefile"
+	@echo "... baseandloop_test.o"
+	@echo "... baseandloop_test.i"
+	@echo "... baseandloop_test.s"
+	@echo "... condition_test.o"
+	@echo "... condition_test.i"
+	@echo "... condition_test.s"
+	@echo "... condition_timedwait_test.o"
+	@echo "... condition_timedwait_test.i"
+	@echo "... condition_timedwait_test.s"
+	@echo "... logbuffer_test.o"
+	@echo "... logbuffer_test.i"
+	@echo "... logbuffer_test.s"
+	@echo "... writefile_test.o"
+	@echo "... writefile_test.i"
+	@echo "... writefile_test.s"
 .PHONY : help
 
 

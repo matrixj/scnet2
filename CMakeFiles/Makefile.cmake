@@ -40,7 +40,10 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
   "src/base/CMakeFiles/scnet2_base.dir/DependInfo.cmake"
-  "src/base/tests/CMakeFiles/BaseLoopAndThread.dir/DependInfo.cmake"
-  "src/base/tests/CMakeFiles/Logger.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/baseandloop.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/condition.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/condition_timedwait_test.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/logbuffer.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/writefile.dir/DependInfo.cmake"
   "src/net/CMakeFiles/scnet2_net.dir/DependInfo.cmake"
   )

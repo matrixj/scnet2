@@ -6,24 +6,29 @@
 
 #include <pthread.h>
 
+#include <base/CurrentThread.h>
 namespace scnet2 {
 
 class Holder : boost::noncopyable{
  private:
   pthread_mutex_t _lock;
+  pid_t _locker;
  public:
   Holder() {
     ::pthread_mutex_init(&_lock, NULL);
-    //::pthread_mutex_lock(_lock);
   }
   void unlock() {
     ::pthread_mutex_unlock(&_lock);
+    _locker = 0;
   }
   ~Holder() {
+    assert(_locker == 0);
     ::pthread_mutex_destroy(&_lock);
   }
   void lock() {
+    assert(_locker != CurrentThread::tid());
     ::pthread_mutex_lock(&_lock);
+    _locker = CurrentThread::tid();
   }
   pthread_mutex_t *getLock() {
     return &_lock;

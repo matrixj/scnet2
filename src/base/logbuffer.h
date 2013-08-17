@@ -4,6 +4,8 @@
 #include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 
+#include <stdio.h>
+
 #include <base/mutexlock.h>
 #include <base/condition.h>
 #include <base/buffer.h>
@@ -21,6 +23,7 @@ class LogBuffer : boost::noncopyable {
   void stop() {
     _logging = false;
     _cond.signal();
+    printf("going to stop main thread\n");
     _thread.join();
   }
 
@@ -30,7 +33,7 @@ class LogBuffer : boost::noncopyable {
   typedef BufferVector::auto_type VecTypePtr;
   void threadFunc();
 
-  const int kCondWaitInterval;
+  const int kCondWaitTime;
   VecTypePtr _current;
   VecTypePtr _next;
   BufferVector _bufferVector;
