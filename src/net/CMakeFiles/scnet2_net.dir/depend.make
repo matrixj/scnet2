@@ -10,15 +10,8 @@ src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o: src/net/epoller.h
 src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o: src/net/poller.h
 
 src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/net/poller.cc
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/AtomicInt.h
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/BaseLoop.h
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/Channel.h
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/Time.h
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/Timer.h
 src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/Timestamp.h
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/TypedefCallback.h
 src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/copyable.h
-src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/base/thread.h
 src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/net/epoller.h
 src/net/CMakeFiles/scnet2_net.dir/poller.cc.o: src/net/poller.h
 

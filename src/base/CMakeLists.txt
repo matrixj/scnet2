@@ -1,6 +1,6 @@
 set(base_SRCS
-    BaseLoop.cc
-    Thread.cc
+    baseloop.cc
+    thread.cc
     Timer.cc
     Time.cc
     Timestamp.cc

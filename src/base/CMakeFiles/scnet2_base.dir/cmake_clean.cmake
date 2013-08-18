@@ -1,6 +1,6 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/scnet2_base.dir/BaseLoop.cc.o"
-  "CMakeFiles/scnet2_base.dir/Thread.cc.o"
+  "CMakeFiles/scnet2_base.dir/baseloop.cc.o"
+  "CMakeFiles/scnet2_base.dir/thread.cc.o"
   "CMakeFiles/scnet2_base.dir/Timer.cc.o"
   "CMakeFiles/scnet2_base.dir/Time.cc.o"
   "CMakeFiles/scnet2_base.dir/Timestamp.cc.o"

@@ -6,7 +6,7 @@
 #include <sys/time.h>
 
 #include <base/Time.h>
-#include <base/BaseLoop.h>
+#include <base/baseloop.h>
 #include <base/Timestamp.h>
 #include <base/Channel.h>
 #include <base/Timestamp.h>

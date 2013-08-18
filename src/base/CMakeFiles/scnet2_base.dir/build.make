@@ -49,53 +49,53 @@ include src/base/CMakeFiles/scnet2_base.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/base/CMakeFiles/scnet2_base.dir/flags.make
 
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o: src/base/CMakeFiles/scnet2_base.dir/flags.make
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o: src/base/BaseLoop.cc
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o: src/base/CMakeFiles/scnet2_base.dir/flags.make
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o: src/base/baseloop.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o"
-	cd /home/jmchen/work/scnet2/src/base && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_base.dir/BaseLoop.cc.o -c /home/jmchen/work/scnet2/src/base/BaseLoop.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o"
+	cd /home/jmchen/work/scnet2/src/base && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_base.dir/baseloop.cc.o -c /home/jmchen/work/scnet2/src/base/baseloop.cc
 
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_base.dir/BaseLoop.cc.i"
-	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/base/BaseLoop.cc > CMakeFiles/scnet2_base.dir/BaseLoop.cc.i
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_base.dir/baseloop.cc.i"
+	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/base/baseloop.cc > CMakeFiles/scnet2_base.dir/baseloop.cc.i
 
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_base.dir/BaseLoop.cc.s"
-	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/base/BaseLoop.cc -o CMakeFiles/scnet2_base.dir/BaseLoop.cc.s
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_base.dir/baseloop.cc.s"
+	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/base/baseloop.cc -o CMakeFiles/scnet2_base.dir/baseloop.cc.s
 
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.requires:
-.PHONY : src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.requires
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.requires:
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.requires
 
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.provides: src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.requires
-	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.provides.build
-.PHONY : src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.provides
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.provides: src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.requires
+	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.provides.build
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.provides
 
-src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.provides.build: src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o
-.PHONY : src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.provides.build
+src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.provides.build: src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.provides.build
 
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o: src/base/CMakeFiles/scnet2_base.dir/flags.make
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o: src/base/Thread.cc
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.o: src/base/CMakeFiles/scnet2_base.dir/flags.make
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.o: src/base/thread.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o"
-	cd /home/jmchen/work/scnet2/src/base && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_base.dir/Thread.cc.o -c /home/jmchen/work/scnet2/src/base/Thread.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/base/CMakeFiles/scnet2_base.dir/thread.cc.o"
+	cd /home/jmchen/work/scnet2/src/base && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_base.dir/thread.cc.o -c /home/jmchen/work/scnet2/src/base/thread.cc
 
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_base.dir/Thread.cc.i"
-	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/base/Thread.cc > CMakeFiles/scnet2_base.dir/Thread.cc.i
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_base.dir/thread.cc.i"
+	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/base/thread.cc > CMakeFiles/scnet2_base.dir/thread.cc.i
 
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_base.dir/Thread.cc.s"
-	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/base/Thread.cc -o CMakeFiles/scnet2_base.dir/Thread.cc.s
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_base.dir/thread.cc.s"
+	cd /home/jmchen/work/scnet2/src/base && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/base/thread.cc -o CMakeFiles/scnet2_base.dir/thread.cc.s
 
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.requires:
-.PHONY : src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.requires
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.requires:
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.requires
 
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.provides: src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.requires
-	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.provides.build
-.PHONY : src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.provides
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.provides: src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.requires
+	$(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.provides.build
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.provides
 
-src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.provides.build: src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o
-.PHONY : src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.provides.build
+src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.provides.build: src/base/CMakeFiles/scnet2_base.dir/thread.cc.o
+.PHONY : src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.provides.build
 
 src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o: src/base/CMakeFiles/scnet2_base.dir/flags.make
 src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o: src/base/Timer.cc
@@ -291,8 +291,8 @@ src/base/CMakeFiles/scnet2_base.dir/countdown_latch.cc.o.provides.build: src/bas
 
 # Object files for target scnet2_base
 scnet2_base_OBJECTS = \
-"CMakeFiles/scnet2_base.dir/BaseLoop.cc.o" \
-"CMakeFiles/scnet2_base.dir/Thread.cc.o" \
+"CMakeFiles/scnet2_base.dir/baseloop.cc.o" \
+"CMakeFiles/scnet2_base.dir/thread.cc.o" \
 "CMakeFiles/scnet2_base.dir/Timer.cc.o" \
 "CMakeFiles/scnet2_base.dir/Time.cc.o" \
 "CMakeFiles/scnet2_base.dir/Timestamp.cc.o" \
@@ -305,8 +305,8 @@ scnet2_base_OBJECTS = \
 # External object files for target scnet2_base
 scnet2_base_EXTERNAL_OBJECTS =
 
-lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o
-lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o
+lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o
+lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/thread.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/Time.cc.o
 lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.o
@@ -325,8 +325,8 @@ lib/libscnet2_base.a: src/base/CMakeFiles/scnet2_base.dir/link.txt
 src/base/CMakeFiles/scnet2_base.dir/build: lib/libscnet2_base.a
 .PHONY : src/base/CMakeFiles/scnet2_base.dir/build
 
-src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o.requires
-src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o.requires
+src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o.requires
+src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/thread.cc.o.requires
 src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o.requires
 src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/Time.cc.o.requires
 src/base/CMakeFiles/scnet2_base.dir/requires: src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.o.requires

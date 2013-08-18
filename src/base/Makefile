@@ -153,30 +153,6 @@ scnet2_base/fast:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/build
 .PHONY : scnet2_base/fast
 
-BaseLoop.o: BaseLoop.cc.o
-.PHONY : BaseLoop.o
-
-# target to build an object file
-BaseLoop.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.o
-.PHONY : BaseLoop.cc.o
-
-BaseLoop.i: BaseLoop.cc.i
-.PHONY : BaseLoop.i
-
-# target to preprocess a source file
-BaseLoop.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.i
-.PHONY : BaseLoop.cc.i
-
-BaseLoop.s: BaseLoop.cc.s
-.PHONY : BaseLoop.s
-
-# target to generate assembly for a file
-BaseLoop.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/BaseLoop.cc.s
-.PHONY : BaseLoop.cc.s
-
 Channel.o: Channel.cc.o
 .PHONY : Channel.o
 
@@ -200,30 +176,6 @@ Channel.s: Channel.cc.s
 Channel.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cc.s
 .PHONY : Channel.cc.s
-
-Thread.o: Thread.cc.o
-.PHONY : Thread.o
-
-# target to build an object file
-Thread.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Thread.cc.o
-.PHONY : Thread.cc.o
-
-Thread.i: Thread.cc.i
-.PHONY : Thread.i
-
-# target to preprocess a source file
-Thread.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Thread.cc.i
-.PHONY : Thread.cc.i
-
-Thread.s: Thread.cc.s
-.PHONY : Thread.s
-
-# target to generate assembly for a file
-Thread.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Thread.cc.s
-.PHONY : Thread.cc.s
 
 Time.o: Time.cc.o
 .PHONY : Time.o
@@ -296,6 +248,30 @@ Timestamp.s: Timestamp.cc.s
 Timestamp.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
+
+baseloop.o: baseloop.cc.o
+.PHONY : baseloop.o
+
+# target to build an object file
+baseloop.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.o
+.PHONY : baseloop.cc.o
+
+baseloop.i: baseloop.cc.i
+.PHONY : baseloop.i
+
+# target to preprocess a source file
+baseloop.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.i
+.PHONY : baseloop.cc.i
+
+baseloop.s: baseloop.cc.s
+.PHONY : baseloop.s
+
+# target to generate assembly for a file
+baseloop.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.s
+.PHONY : baseloop.cc.s
 
 condition.o: condition.cc.o
 .PHONY : condition.o
@@ -393,6 +369,30 @@ logger.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/logger.cc.s
 .PHONY : logger.cc.s
 
+thread.o: thread.cc.o
+.PHONY : thread.o
+
+# target to build an object file
+thread.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/thread.cc.o
+.PHONY : thread.cc.o
+
+thread.i: thread.cc.i
+.PHONY : thread.i
+
+# target to preprocess a source file
+thread.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/thread.cc.i
+.PHONY : thread.cc.i
+
+thread.s: thread.cc.s
+.PHONY : thread.s
+
+# target to generate assembly for a file
+thread.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/thread.cc.s
+.PHONY : thread.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -406,15 +406,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... scnet2_base"
-	@echo "... BaseLoop.o"
-	@echo "... BaseLoop.i"
-	@echo "... BaseLoop.s"
 	@echo "... Channel.o"
 	@echo "... Channel.i"
 	@echo "... Channel.s"
-	@echo "... Thread.o"
-	@echo "... Thread.i"
-	@echo "... Thread.s"
 	@echo "... Time.o"
 	@echo "... Time.i"
 	@echo "... Time.s"
@@ -424,6 +418,9 @@ help:
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
+	@echo "... baseloop.o"
+	@echo "... baseloop.i"
+	@echo "... baseloop.s"
 	@echo "... condition.o"
 	@echo "... condition.i"
 	@echo "... condition.s"
@@ -436,6 +433,9 @@ help:
 	@echo "... logger.o"
 	@echo "... logger.i"
 	@echo "... logger.s"
+	@echo "... thread.o"
+	@echo "... thread.i"
+	@echo "... thread.s"
 .PHONY : help
 
 

@@ -1,5 +1,5 @@
 #include <base/thread.h>
-#include <base/BaseLoop.h>
+#include <base/baseloop.h>
 
 using namespace scnet2;
 using namespace scnet2::base;
@@ -13,7 +13,7 @@ void func()
 int main()
 {
     BaseLoop loop;
-    Thread thread(func);
+    Thread thread(func, "Another_thread");
     thread.start();
 
     loop.loop();
