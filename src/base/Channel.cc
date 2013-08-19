@@ -17,7 +17,7 @@ Channel::Channel(BaseLoop *loop, int filedes)
     _revents(0),
     _eventHandling(false),
     _tied(false),
-    _idx(-1) { }
+    index_(-1) { }
     
 Channel::~Channel() {
   assert(!_eventHandling);

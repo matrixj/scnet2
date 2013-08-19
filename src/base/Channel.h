@@ -37,7 +37,7 @@ class Channel : boost::noncopyable {
     return _noneCb;
   }
 
-  void setFd(int tmp_fd) {
+  void set_fd(int tmp_fd) {
     _fd = tmp_fd;
   }
 
@@ -46,7 +46,7 @@ class Channel : boost::noncopyable {
   }
 
   void enableWrite() {
-    _events |= RDEVT;
+    _events |= WRTEVT;
     updatePoller();
   }
   void disableWrite() {
@@ -54,7 +54,7 @@ class Channel : boost::noncopyable {
     updatePoller();
   }
   void enableRead() {
-    _events |= WRTEVT;
+    _events |= RDEVT;
     updatePoller();
   }
   void disableRead() {
@@ -66,16 +66,16 @@ class Channel : boost::noncopyable {
     return _events;
   }
 
-  void setRevents(int revents) {
+  void set_revents(int revents) {
     _revents = revents;
   }
 
-  void setIndex(int idx) {
-    _idx = idx;
+  void set_index(int idx) {
+    index_ = idx;
   }
 
   int index() {
-    return _idx;
+    return index_;
   }
 
   
@@ -99,7 +99,7 @@ class Channel : boost::noncopyable {
    bool _eventHandling;
    bool _tied;
 
-   int _idx;
+   int index_;
    bool _noneCb;
 };
 
