@@ -10,6 +10,7 @@
 #include <base/TypedefCallback.h>
 #include <base/thread.h>
 #include <base/mutexlock.h>
+#include <base/logbuffer.h>
 
 namespace scnet2 {
 
@@ -46,19 +47,20 @@ class BaseLoop : boost::noncopyable {
    void handleQueueCb();
    void readWakeupfd();
 
-   const pid_t _threadId;
-   bool _looping;
-   bool _quit;
-   boost::scoped_ptr<net::Poller> _poll;
-   boost::scoped_ptr<Timer> _timer;
-   int _wakeupfd;
-   std::vector<Queuecb> _queueCbs;
-   bool _callingQueueCbs;
-   boost::scoped_ptr<Channel> _wakeupChannel;
-   std::vector<Channel*> _activeChannels;
-   bool _callingPollCbs;
-
+   const pid_t threadId_;
+   bool looping_;
+   bool quit_;
+   boost::scoped_ptr<net::Poller> poll_;
+   boost::scoped_ptr<Timer> timer_;
+   int wakeupfd_;
+   std::vector<Queuecb> queueCbs_;
+   bool callingQueueCbs_;
+   boost::scoped_ptr<Channel> wakeupChannel_;
+   std::vector<Channel*> activeChannels_;
+   bool callingPollCbs_;
    MutexLock lock_;
+
+   LogBuffer log_;
 };
 
 }

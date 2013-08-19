@@ -1,11 +1,13 @@
 #include <base/baseloop.h>
 
 #include <vector>
+#include <string> //for LogBuffer constructor
 
 #include <boost/bind.hpp>
 
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 #include <sys/eventfd.h>
 
 #include <base/Timer.h>
@@ -15,6 +17,10 @@
 #include <base/CurrentThread.h>
 #include <base/thread.h>
 #include <net/poller.h>
+
+#ifdef DEBUG
+#include <base/logbuffer.h>
+#endif
 
 
 using namespace scnet2;
@@ -28,21 +34,24 @@ __thread BaseLoop *g_loopInThread = 0;
 }
 
 BaseLoop::BaseLoop()
-    : _threadId(CurrentThread::tid()),
-      _looping(false),
-      _quit(false),
-      _poll(Poller::getEpoll(this)),
-      _timer(new Timer(this)),
-      _wakeupfd(createFd()),
-      _wakeupChannel(new Channel(this, _wakeupfd)) {
-        if (g_loopInThread) {
-            perror("Another Loop run in this thread");
-        } else {
-            g_loopInThread = this;
-        }
+    : threadId_(CurrentThread::tid()),
+      looping_(false),
+      quit_(false),
+      poll_(Poller::getEpoll(this)),
+      timer_(new Timer(this)),
+      wakeupfd_(createFd()),
+      wakeupChannel_(new Channel(this, wakeupfd_)),
+      log_(string("debug")){
+  if (g_loopInThread) {
+      perror("Another Loop run in this thread");
+  } else {
+      g_loopInThread = this;
+  }
 
-        _wakeupChannel->setReadCb(boost::bind(&BaseLoop::readWakeupfd, this));
-        _wakeupChannel->enableRead();
+  wakeupChannel_->setReadCb(boost::bind(&BaseLoop::readWakeupfd, this));
+  wakeupChannel_->enableRead();
+  
+  log_.start();
 }
 
 BaseLoop::~BaseLoop() {
@@ -56,56 +65,63 @@ BaseLoop* BaseLoop::getLoopInThreadNum() {
 
 // Start looping  the base event loop
 void BaseLoop::loop() {
-  assert(!_looping);
-  _looping = true;
-  _quit = false;
+  assert(!looping_);
+  looping_ = true;
+  quit_ = false;
   printf("Loop start looping\n");
   Channel *tmp;
 
-  while (!_quit) {
-    _activeChannels.clear();
-    _poll->wait(kPollWaitTime, &_activeChannels);
-    _callingPollCbs = true;
-    std::vector<Channel*>::iterator i = _activeChannels.begin();
+  char msg[64];
+
+  while (!quit_) {
+    activeChannels_.clear();
+    poll_->wait(kPollWaitTime, &activeChannels_);
+    callingPollCbs_ = true;
+    sprintf(msg, "Poller wait return %d activeChannels\n",
+             static_cast<int>(activeChannels_.size()));
+    log_.appendToBuffer(msg, static_cast<int>(strlen(msg)));
+    
+    printf("%s", msg);
+    std::vector<Channel*>::iterator i = activeChannels_.begin();
     // Calling active Channels. The _activeChannels was copy from poller, no
     // need to be locked by mutexlock
-    for (; i != _activeChannels.end(); i++) {
+    for (; i != activeChannels_.end(); i++) {
       tmp = *i;
       tmp->handleEvent();
     }
-    _callingQueueCbs = false;
+    callingQueueCbs_ = false;
     // Calling callback in the queue(Push main loop thread)
     printf("start to call handleQueueCb\n");
     handleQueueCb();
   }
 
   printf("Loop quit \n");
-  _looping = false;
+  looping_ = false;
 }
 
 void BaseLoop::handleQueueCb() {
   std::vector<Queuecb> tmp;
-  _callingQueueCbs = true;
+  callingQueueCbs_ = true;
   {
     MutexLockGuard lock(lock_);
-    tmp.swap(_queueCbs);
+    tmp.swap(queueCbs_);
   }
   for (size_t i = 0; i < tmp.size(); i++) {
     tmp[i]();
   }
-  _callingQueueCbs = false;
+  callingQueueCbs_ = false;
 }
 
 void BaseLoop::quit() {
-  _quit = true;
+  quit_ = true;
 }
 
 TimerId BaseLoop::runAt(const Timercb& cb, Timestamp ts) {
-  return _timer->addTimer(cb, ts, 0.0);
+  return timer_->addTimer(cb, ts, 0.0);
 }
 
 void BaseLoop::updateChannel(Channel *c) {
-  _poll->updateChannel(c);
+  poll_->updateChannel(c);
 }
 void BaseLoop::runInLoop(const boost::function<void ()>& cb) {
   if (isInLoopThread()) {
@@ -115,16 +131,16 @@ void BaseLoop::runInLoop(const boost::function<void ()>& cb) {
   }
 }
 bool BaseLoop::isInLoopThread() {
-  return _threadId == CurrentThread::tid();
+  return threadId_ == CurrentThread::tid();
 }
 
 void BaseLoop::pushQueueInLoop(const boost::function<void ()>& cb) {
   {
     MutexLockGuard lock(lock_);
-    _queueCbs.push_back(cb);
+    queueCbs_.push_back(cb);
   }
 
-  if (!isInLoopThread() || _callingQueueCbs) {
+  if (!isInLoopThread() || callingQueueCbs_) {
     wakeupLoopThread();
   }
 }
@@ -133,14 +149,14 @@ void BaseLoop::pushQueueInLoop(const boost::function<void ()>& cb) {
 
 void BaseLoop::wakeupLoopThread() {
   uint64_t u;
-  if (::write(_wakeupfd, &u, sizeof u) != sizeof u) {
+  if (::write(wakeupfd_, &u, sizeof u) != sizeof u) {
     perror("write to wakeupfd");
   }
 } 
 
 void BaseLoop::readWakeupfd() {
   uint64_t u;
-  ssize_t n = ::read(_wakeupfd, &u, sizeof u);
+  ssize_t n = ::read(wakeupfd_, &u, sizeof u);
   if (n != sizeof n) {
     perror("read wakefd");
   }
@@ -150,7 +166,7 @@ void BaseLoop::readWakeupfd() {
 
 int BaseLoop::createFd() {
   int fd = eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK);
-  if (_wakeupfd == -1) {
+  if (fd == -1) {
     perror("eventfd");
   }
   return fd;
