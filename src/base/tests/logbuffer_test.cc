@@ -28,8 +28,15 @@ void print() {
     struct timespec ts = { 0,  50 * 1000 *1000 };
     nanosleep(&ts, NULL);
   }
-  sleep(20);
 }
+
+class TestLog {
+ public:
+  TestLog() : log_(string("tesglog")) {}
+  ~TestLog() {}
+ private:
+  LogBuffer log_;
+};
 
 int main() {
   string basename = "testlog";

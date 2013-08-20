@@ -41,7 +41,7 @@ BaseLoop::BaseLoop()
       timer_(new Timer(this)),
       wakeupfd_(createFd()),
       wakeupChannel_(new Channel(this, wakeupfd_)),
-      log_(string("debug")){
+      log_("debug"){
   if (g_loopInThread) {
       perror("Another Loop run in this thread");
   } else {
@@ -161,7 +161,6 @@ void BaseLoop::readWakeupfd() {
     perror("read wakefd");
   }
   handleQueueCb();
-
 }
 
 int BaseLoop::createFd() {

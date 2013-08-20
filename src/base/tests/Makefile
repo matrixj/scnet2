@@ -168,18 +168,32 @@ condition/fast:
 .PHONY : condition/fast
 
 # Convenience name for target.
-src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule
-.PHONY : src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule
+src/base/tests/CMakeFiles/condition_timedwait.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/condition_timedwait.dir/rule
+.PHONY : src/base/tests/CMakeFiles/condition_timedwait.dir/rule
 
 # Convenience name for target.
-condition_timedwait_test: src/base/tests/CMakeFiles/condition_timedwait_test.dir/rule
-.PHONY : condition_timedwait_test
+condition_timedwait: src/base/tests/CMakeFiles/condition_timedwait.dir/rule
+.PHONY : condition_timedwait
 
 # fast build rule for target.
-condition_timedwait_test/fast:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/build
-.PHONY : condition_timedwait_test/fast
+condition_timedwait/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait.dir/build.make src/base/tests/CMakeFiles/condition_timedwait.dir/build
+.PHONY : condition_timedwait/fast
+
+# Convenience name for target.
+src/base/tests/CMakeFiles/currenttid.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/currenttid.dir/rule
+.PHONY : src/base/tests/CMakeFiles/currenttid.dir/rule
+
+# Convenience name for target.
+currenttid: src/base/tests/CMakeFiles/currenttid.dir/rule
+.PHONY : currenttid
+
+# fast build rule for target.
+currenttid/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/currenttid.dir/build.make src/base/tests/CMakeFiles/currenttid.dir/build
+.PHONY : currenttid/fast
 
 # Convenience name for target.
 src/base/tests/CMakeFiles/logbuffer.dir/rule:
@@ -262,7 +276,7 @@ condition_timedwait_test.o: condition_timedwait_test.cc.o
 
 # target to build an object file
 condition_timedwait_test.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/condition_timedwait_test.cc.o
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait.dir/build.make src/base/tests/CMakeFiles/condition_timedwait.dir/condition_timedwait_test.cc.o
 .PHONY : condition_timedwait_test.cc.o
 
 condition_timedwait_test.i: condition_timedwait_test.cc.i
@@ -270,7 +284,7 @@ condition_timedwait_test.i: condition_timedwait_test.cc.i
 
 # target to preprocess a source file
 condition_timedwait_test.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/condition_timedwait_test.cc.i
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait.dir/build.make src/base/tests/CMakeFiles/condition_timedwait.dir/condition_timedwait_test.cc.i
 .PHONY : condition_timedwait_test.cc.i
 
 condition_timedwait_test.s: condition_timedwait_test.cc.s
@@ -278,8 +292,32 @@ condition_timedwait_test.s: condition_timedwait_test.cc.s
 
 # target to generate assembly for a file
 condition_timedwait_test.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait_test.dir/build.make src/base/tests/CMakeFiles/condition_timedwait_test.dir/condition_timedwait_test.cc.s
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/condition_timedwait.dir/build.make src/base/tests/CMakeFiles/condition_timedwait.dir/condition_timedwait_test.cc.s
 .PHONY : condition_timedwait_test.cc.s
+
+currenttid_test.o: currenttid_test.cc.o
+.PHONY : currenttid_test.o
+
+# target to build an object file
+currenttid_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/currenttid.dir/build.make src/base/tests/CMakeFiles/currenttid.dir/currenttid_test.cc.o
+.PHONY : currenttid_test.cc.o
+
+currenttid_test.i: currenttid_test.cc.i
+.PHONY : currenttid_test.i
+
+# target to preprocess a source file
+currenttid_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/currenttid.dir/build.make src/base/tests/CMakeFiles/currenttid.dir/currenttid_test.cc.i
+.PHONY : currenttid_test.cc.i
+
+currenttid_test.s: currenttid_test.cc.s
+.PHONY : currenttid_test.s
+
+# target to generate assembly for a file
+currenttid_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/currenttid.dir/build.make src/base/tests/CMakeFiles/currenttid.dir/currenttid_test.cc.s
+.PHONY : currenttid_test.cc.s
 
 logbuffer_test.o: logbuffer_test.cc.o
 .PHONY : logbuffer_test.o
@@ -337,7 +375,8 @@ help:
 	@echo "... depend"
 	@echo "... baseandloop"
 	@echo "... condition"
-	@echo "... condition_timedwait_test"
+	@echo "... condition_timedwait"
+	@echo "... currenttid"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -355,6 +394,9 @@ help:
 	@echo "... condition_timedwait_test.o"
 	@echo "... condition_timedwait_test.i"
 	@echo "... condition_timedwait_test.s"
+	@echo "... currenttid_test.o"
+	@echo "... currenttid_test.i"
+	@echo "... currenttid_test.s"
 	@echo "... logbuffer_test.o"
 	@echo "... logbuffer_test.i"
 	@echo "... logbuffer_test.s"

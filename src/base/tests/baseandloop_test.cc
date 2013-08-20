@@ -13,8 +13,8 @@ void func()
 int main()
 {
     BaseLoop loop;
-    Thread thread(func, "Another_thread");
-    thread.start();
+ //   Thread thread(func, "Another_thread");
+//    thread.start();
 
     loop.loop();
 }

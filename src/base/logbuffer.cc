@@ -15,7 +15,7 @@
 
 using namespace scnet2;
 
-LogBuffer::LogBuffer(std::string& basename)
+LogBuffer::LogBuffer(const std::string& basename)
   : kCondWaitTime(3),
     _current(new BufferType),
     _next(new BufferType),
@@ -24,10 +24,10 @@ LogBuffer::LogBuffer(std::string& basename)
     _lock(),
     _cond(_lock),
     latch_(1) {
-      _current->bzero();
-      _next->bzero();
-      _bufferVector.reserve(16);
-          }
+  _current->bzero();
+  _next->bzero();
+  _bufferVector.reserve(16);
+}
 void LogBuffer::appendToBuffer(const char *str, int len) {
   {
     MutexLockGuard lock(_lock);
