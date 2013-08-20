@@ -1,11 +1,11 @@
 #include <base/baseloop.h>
-#include <base/Channel.h>
+#include <base/channel.h>
 
 #include <assert.h>
 #include <poll.h>
 
 using namespace scnet2;
-using namespace scnet2::base;
+//using namespace scnet2::base;
 
 const int Channel::RDEVT = POLLIN | POLLPRI;
 const int Channel::WRTEVT = POLLOUT;
@@ -29,12 +29,13 @@ void Channel::tie(boost::weak_ptr<void>& obj) {
   _tie = obj;
   _tied = true;
 }
-
 void Channel::handleEvent() {
  if ( _revents & RDEVT) {
+   assert(_readCb);
    _readCb();
  }
  if (_revents & WRTEVT) {
+   assert(_writeCb);
    _writeCb();
  }
  //TODO::more events handler

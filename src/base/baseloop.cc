@@ -10,11 +10,11 @@
 #include <string.h>
 #include <sys/eventfd.h>
 
-#include <base/Timer.h>
-#include <base/Time.h>
-#include <base/Timestamp.h>
-#include <base/Channel.h>
-#include <base/CurrentThread.h>
+#include <base/timer.h>
+#include <base/time.h>
+#include <base/timestamp.h>
+#include <base/channel.h>
+#include <base/current_thread.h>
 #include <base/thread.h>
 #include <net/poller.h>
 
@@ -24,7 +24,7 @@
 
 
 using namespace scnet2;
-using namespace scnet2::base;
+//using namespace scnet2::base;
 using namespace scnet2::net;
 
 namespace{
@@ -55,7 +55,7 @@ BaseLoop::BaseLoop()
 }
 
 BaseLoop::~BaseLoop() {
-  printf("BaseLoop destructs\n");
+  LOG_DEBUG("BaseLoop destroctor");
   g_loopInThread = NULL;
 }
 
@@ -65,10 +65,11 @@ BaseLoop* BaseLoop::getLoopInThreadNum() {
 
 // Start looping  the base event loop
 void BaseLoop::loop() {
+  LOG_DEBUG("bseLoop::loop start to loop");
+
   assert(!looping_);
   looping_ = true;
   quit_ = false;
-  printf("Loop start looping\n");
   Channel *tmp;
 
   char msg[64];
@@ -77,11 +78,10 @@ void BaseLoop::loop() {
     activeChannels_.clear();
     poll_->wait(kPollWaitTime, &activeChannels_);
     callingPollCbs_ = true;
-    sprintf(msg, "Poller wait return %d activeChannels\n",
+    sprintf(msg, "Poller wait return %d activeChannels",
              static_cast<int>(activeChannels_.size()));
-    log_.appendToBuffer(msg, static_cast<int>(strlen(msg)));
+    LOG_DEBUG(msg);
     
-    printf("%s", msg);
     std::vector<Channel*>::iterator i = activeChannels_.begin();
     // Calling active Channels. The _activeChannels was copy from poller, no
     // need to be locked by mutexlock
@@ -91,11 +91,10 @@ void BaseLoop::loop() {
     }
     callingQueueCbs_ = false;
     // Calling callback in the queue(Push main loop thread)
-    printf("start to call handleQueueCb\n");
     handleQueueCb();
   }
 
-  printf("Loop quit \n");
+  LOG_DEBUG("BaseLoop::loop is going to stop");
   looping_ = false;
 }
 
@@ -106,6 +105,8 @@ void BaseLoop::handleQueueCb() {
     MutexLockGuard lock(lock_);
     tmp.swap(queueCbs_);
   }
+
+  LOG_DEBUG("handleQueueCb call");
   for (size_t i = 0; i < tmp.size(); i++) {
     tmp[i]();
   }
@@ -116,7 +117,7 @@ void BaseLoop::quit() {
   quit_ = true;
 }
 
-TimerId BaseLoop::runAt(const Timercb& cb, Timestamp ts) {
+TimerId BaseLoop::runAt(const Timercb& cb, const Timestamp& ts) {
   return timer_->addTimer(cb, ts, 0.0);
 }
 

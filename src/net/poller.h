@@ -6,28 +6,28 @@
 #include <boost/noncopyable.hpp>
 
 #include <net/poller.h>
-#include <base/Timestamp.h>
+#include <base/timestamp.h>
 
 namespace scnet2 {
 
-namespace base {
+//namespace base {
 class BaseLoop;
 class Channel;
-}
+//}
 
 namespace net {
 
 class Poller : boost::noncopyable {
  public:
-  Poller(base::BaseLoop *loop);
+  Poller(BaseLoop *loop);
   ~Poller();
 
-  static Poller* getEpoll(base::BaseLoop* loop);
+  static Poller* getEpoll(BaseLoop* loop);
 
-  virtual Timestamp wait(const int timeout, std::vector<base::Channel*> *chanels) = 0;
-  virtual void updateChannel(base::Channel *channel) = 0;
+  virtual Timestamp wait(const int timeout, std::vector<Channel*> *chanels) = 0;
+  virtual void updateChannel(Channel *channel) = 0;
  private:
-  base::BaseLoop *_loop;
+  BaseLoop *_loop;
 };
 
 } //end of scnet namespace

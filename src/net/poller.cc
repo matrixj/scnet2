@@ -5,7 +5,7 @@
 
 using namespace scnet2;
 using namespace scnet2::net;
-using namespace scnet2::base;
+//using namespace scnet2::base;
 
 Poller::Poller(BaseLoop *loop) 
   : _loop(loop) { }

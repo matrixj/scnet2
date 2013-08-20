@@ -6,7 +6,7 @@
 
 #include <pthread.h>
 
-#include <base/CurrentThread.h>
+#include <base/current_thread.h>
 namespace scnet2 {
 
 class Holder : boost::noncopyable{

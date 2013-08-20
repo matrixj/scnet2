@@ -5,12 +5,20 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
 
-#include <base/Timer.h>
-#include <base/Timestamp.h>
-#include <base/TypedefCallback.h>
+#include <base/timer.h>
+#include <base/timestamp.h>
+#include <base/typedef_callback.h>
 #include <base/thread.h>
 #include <base/mutexlock.h>
 #include <base/logbuffer.h>
+
+#define LOG_DEBUG(str) { \
+  char fmt[64]; \
+    int n = sprintf(fmt, "%s %s:%d\n", str, __FILE__, __LINE__); \
+    log_.appendToBuffer((fmt), n); \
+}
+#define LOG_ERROR(str) LOG_DEBUG(str) \
+    abord();
 
 namespace scnet2 {
 
@@ -18,7 +26,7 @@ namespace net {
 class Poller;
 }
 
-namespace base {
+//namespace base {
 
 //class Timer;
 class TimerId;
@@ -34,7 +42,7 @@ class BaseLoop : boost::noncopyable {
 
   static BaseLoop* getLoopInThreadNum();
 
-  TimerId runAt(const Timercb& cb, Timestamp ts);
+  TimerId runAt(const Timercb& cb, const Timestamp& ts);
   void runInLoop(const boost::function<void ()>&);
   void updateChannel(Channel *c);
   bool isInLoopThread();
@@ -63,6 +71,6 @@ class BaseLoop : boost::noncopyable {
    LogBuffer log_;
 };
 
-}
-}
+//}
+}// End of scnet2 namespace
 #endif

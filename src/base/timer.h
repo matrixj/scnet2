@@ -4,17 +4,14 @@
 #include <set>
 #include <vector>
 
-#include <base/Time.h>
-#include <base/Timestamp.h>
-#include <base/TypedefCallback.h>
-#include <base/Channel.h>
+#include <base/time.h>
+#include <base/timestamp.h>
+#include <base/typedef_callback.h>
+#include <base/channel.h>
 
 #include <boost/noncopyable.hpp>
 
-namespace scnet2
-{
-namespace base
-{
+namespace scnet2 {
     class BaseLoop;
     //class TimerId;
     class Time;
@@ -58,8 +55,7 @@ namespace base
 
 
     };
-}
-}
+}// End of namespace scnet2
 
 
 #endif

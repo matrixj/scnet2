@@ -6,7 +6,7 @@
 #include <boost/weak_ptr.hpp>
 
 namespace scnet2 {
-namespace base {
+//namespace base {
 
 class BaseLoop;
 
@@ -103,6 +103,6 @@ class Channel : boost::noncopyable {
    bool _noneCb;
 };
 
-}
-}
+//}
+}// End of namepace scnet2
 #endif

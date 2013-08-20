@@ -1,5 +1,5 @@
 #include <base/logger.h>
-#include <base/CurrentThread.h>
+#include <base/current_thread.h>
 
 #include <string>
 
@@ -79,6 +79,7 @@ string Logger::FilePtrHolder::getFileName(const string& basename) {
           t.tm_mday
           );
   */
+#ifndef DEBUG
   sprintf(subfix, 
           ".lib.%02d-%02d.log.%d.%04d%02d%02d",
           t.tm_hour,
@@ -88,6 +89,14 @@ string Logger::FilePtrHolder::getFileName(const string& basename) {
           t.tm_mon + 1, 
           t.tm_mday
           );
+#else
+  sprintf(subfix,
+          "debug.lib.log.%04d%02d%02d",
+          t.tm_year + 1990,
+          t.tm_mon + 1,
+          t.tm_mday
+          );
+#endif
   name += subfix;
   fflush(stdout);
   return name;

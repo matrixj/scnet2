@@ -16,6 +16,21 @@ namespace scnet2 {
 //namespace base {
 
 class LogBuffer : boost::noncopyable {
+ public:
+  LogBuffer(const std::string& basename);
+  ~LogBuffer() {
+    if (_logging) {
+      stop();
+    }
+  }
+  void appendToBuffer(const char *str, int len);
+
+  void start() {
+    _logging = true;
+    _thread.start();
+    latch_.wait();
+  }
+
  private:
   LogBuffer(const LogBuffer&);
   void operator=(const LogBuffer&);
@@ -38,27 +53,12 @@ class LogBuffer : boost::noncopyable {
   VecTypePtr _next;
   BufferVector _bufferVector;
   Thread _thread;
-  string& _basename;
+  const string _basename;
   bool _logging;
 
   MutexLock _lock;
   Condition _cond;
   CountDownLatch latch_;
-
- public:
-  LogBuffer(std::string& basename);
-  ~LogBuffer() {
-    if (_logging) {
-      stop();
-    }
-  }
-  void appendToBuffer(const char *str, int len);
-
-  void start() {
-    _logging = true;
-    _thread.start();
-    latch_.wait();
-  }
 
 //}
 };

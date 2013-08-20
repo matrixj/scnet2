@@ -1,1 +1,0 @@
-g++   -g -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -rdynamic -O0 -DDEBUG  -fPIC CMakeFiles/BaseLoopAndThread.dir/BaseLoopAndThread.cc.o  -o BaseLoopAndThread -rdynamic ../../../lib/libscnet2_base.a ../../../lib/libscnet2_net.a -lrt -lpthread 

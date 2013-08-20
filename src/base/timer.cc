@@ -1,25 +1,22 @@
-#include <base/Timer.h>
+#include <base/timer.h>
 #include <boost/bind.hpp>
 
 #include <stdio.h>
 #include <sys/timerfd.h>
 #include <sys/time.h>
 
-#include <base/Time.h>
+#include <base/time.h>
 #include <base/baseloop.h>
-#include <base/Timestamp.h>
-#include <base/Channel.h>
-#include <base/Timestamp.h>
+#include <base/timestamp.h>
+#include <base/channel.h>
+#include <base/timestamp.h>
 
 
-namespace scnet2
-{
-namespace base
-{
-namespace detail
-{
-int createTimerfd()
-{
+namespace scnet2 {
+
+namespace detail {
+
+int createTimerfd() {
     int fd = ::timerfd_create(CLOCK_MONOTONIC, TFD_NONBLOCK | TFD_CLOEXEC);
 
     if (fd < 0) {
@@ -29,8 +26,7 @@ int createTimerfd()
     return fd;
 }
 
-struct timespec howMuchTimerFromNow(Timestamp t)
-{
+struct timespec howMuchTimerFromNow(Timestamp t) {
     int64_t ms = t.microSecondsSinceEpoch()
                     - Timestamp::now().microSecondsSinceEpoch();
     if (ms < 100) {
@@ -43,8 +39,7 @@ struct timespec howMuchTimerFromNow(Timestamp t)
     return ts;
 }
 
-void readTimerfd(int fd, Timestamp t)
-{
+void readTimerfd(int fd, Timestamp t) {
     uint64_t rdbuf;
     ssize_t n = ::read(fd, &rdbuf, sizeof rdbuf);
     if (n != sizeof rdbuf) {
@@ -52,8 +47,7 @@ void readTimerfd(int fd, Timestamp t)
     }
 }
 
-void resetTimerfd(int fd, Timestamp expiration)
-{
+void resetTimerfd(int fd, Timestamp expiration) {
     struct itimerspec newTimerspec;
     struct itimerspec oldTimerspec;
     bzero(&newTimerspec, sizeof newTimerspec);
@@ -66,29 +60,25 @@ void resetTimerfd(int fd, Timestamp expiration)
     }
 }
 
-}
+}// End of namespace detail
+}// End of namespace scnet2
 
-}
-}
 
 using namespace scnet2;
-using namespace scnet2::base;
-using namespace scnet2::base::detail;
+using namespace scnet2::detail;
 
 Timer::Timer(BaseLoop *loop)
     :_loop(loop),
      _timerfd(createTimerfd()),
      _channel(loop, _timerfd),
      _timerList(),
-     _callingExpiredTimers(false)
-{
+     _callingExpiredTimers(false) {
     _channel.setReadCb(
         boost::bind(&Timer::readcb, this));
     _channel.enableRead();
 }
 
-Timer::~Timer()
-{
+Timer::~Timer() {
     ::close(_timerfd);
     for (timerList::iterator i = _timerList.begin();
         i != _timerList.end(); i++) {
@@ -98,16 +88,15 @@ Timer::~Timer()
 
 TimerId Timer::addTimer(const Timercb& cb,
                        Timestamp ts,
-                       double interval)
-{
+                       double interval) {
     Time *t = new Time(cb, ts, interval);
-    _loop->runInLoop(
-        boost::bind(&Timer::addTimerLoop, this, t));
+    _loop->runInLoop(boost::bind(&Timer::addTimerLoop, this, t));
+
+    //addTimerLoop(t);
     return TimerId(t, t->sequence());
 }
 
-void Timer::addTimerLoop(Time *t)
-{
+void Timer::addTimerLoop(Time *t) {
     bool firstChaneged = insert(t);
 
     if (firstChaneged) {
@@ -116,8 +105,7 @@ void Timer::addTimerLoop(Time *t)
 }
 
 
-void Timer::readcb()
-{
+void Timer::readcb() {
     Timestamp ts(Timestamp::now());
     readTimerfd(_timerfd, ts);
 
@@ -141,8 +129,7 @@ std::vector<Timer::TimerMap> Timer::getExpired(const Timestamp ts) {
   return expired;
 }
 
-void Timer::reset(const std::vector<TimerMap>& expired, Timestamp ts)
-{
+void Timer::reset(const std::vector<TimerMap>& expired, Timestamp ts) {
     Timestamp nextExpire;
     for (std::vector<TimerMap>::const_iterator i = expired.begin();
         i != expired.end(); ++i) {
@@ -161,8 +148,7 @@ void Timer::reset(const std::vector<TimerMap>& expired, Timestamp ts)
 //TODO:Add cancle timer
 
 //If the the time is early then the first time in _timerlist,then must reset the timerfd by timerfd_settime immediately
-bool Timer::insert(Time* t)
-{
+bool Timer::insert(Time* t) {
     bool firstChaneged = false;
     Timestamp ts = t->expiration();
     timerList::iterator i = _timerList.begin();

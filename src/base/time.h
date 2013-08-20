@@ -1,26 +1,24 @@
 #ifndef _SCNET2_BASE_TIME_H_
 #define _SCNET2_BASE_TIME_H_
 
-#include <base/TypedefCallback.h>
-#include <base/AtomicInt.h>
-#include <base/Timestamp.h>
+#include <base/typedef_callback.h>
+#include <base/atomic_int.h>
+#include <base/timestamp.h>
 
 #include <boost/noncopyable.hpp>
 
 namespace scnet2 {
-namespace base {
 
 class Time;
 class TimerId : scnet2::copyable {
-    public:
-        TimerId(Time *timer, int64_t id);
-        TimerId();
-        ~TimerId();
-        friend class Timer;
-    private:
-        Time *_timer;
-        int64_t _id;
-
+  public:
+    TimerId(Time *timer, int64_t id);
+    TimerId();
+    ~TimerId();
+    friend class Timer;
+  private:
+    Time *_timer;
+    int64_t _id;
 };
     
 class Time : boost::noncopyable {
@@ -62,9 +60,7 @@ class Time : boost::noncopyable {
   const int64_t _sequence;
     
   static AtomicInt _s_numCreated;
-
 };
-}
-}
 
+}// End of namespace scnet2
 #endif

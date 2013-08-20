@@ -8,8 +8,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <base/CurrentThread.h>
-#include <base/Timestamp.h>
+#include <base/current_thread.h>
+#include <base/timestamp.h>
 
 namespace scnet2 {
 

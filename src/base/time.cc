@@ -1,10 +1,9 @@
-#include <base/Time.h>
-#include <base/Timestamp.h>
-#include <base/Timer.h>
-#include <base/AtomicInt.h>
+#include <base/time.h>
+#include <base/timestamp.h>
+#include <base/timer.h>
+#include <base/atomic_int.h>
 
 using namespace scnet2;
-using namespace scnet2::base;
 
 AtomicInt Time::_s_numCreated;
 
