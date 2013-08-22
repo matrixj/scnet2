@@ -14,7 +14,7 @@
 
 #define LOG_DEBUG(str) { \
   char fmt[64]; \
-    int n = sprintf(fmt, "%s %s:%d\n", str, __FILE__, __LINE__); \
+    int n = sprintf(fmt, "%s %s:%d %d\n", str, __FILE__, __LINE__, CurrentThread::tid()); \
     log_.appendToBuffer((fmt), n); \
 }
 #define LOG_ERROR(str) LOG_DEBUG(str) \
@@ -46,7 +46,7 @@ class BaseLoop : boost::noncopyable {
   void runInLoop(const boost::function<void ()>&);
   void updateChannel(Channel *c);
   bool isInLoopThread();
-  void pushQueueInLoop(const boost::function<void ()>&);
+  void pushQueueInLoop(const boost::function<void ()>);
 
   private:
    int createFd();

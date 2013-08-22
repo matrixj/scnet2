@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <linux/unistd.h>
 
-#include <base/CurrentThread.h>
+#include <base/current_thread.h>
 
 namespace scnet2 {
 namespace CurrentThread {
@@ -46,11 +46,11 @@ struct ThreadData {
       ptid.reset();
     }
     scnet2::CurrentThread::t_threadName = name_.c_str();
-    func_();
-    scnet2::CurrentThread::t_threadName = "finished";
-    /*
     try {
+      func_();
+      scnet2::CurrentThread::t_threadName = "finished";
     }
+    /*
     catch (const Exception& ex)
     {
         scnet2::CurrentThread::t_threadName = "dump";
@@ -58,9 +58,9 @@ struct ThreadData {
         fprintf(stderr, "reason: %s\n", ex.what());
         abort();
     }
-    
+    */
     catch (const std::exception& ex) {
-      //scnet2::CurrentThread::t_threadName = "dump";
+      scnet2::CurrentThread::t_threadName = "dump";
       fprintf(stderr, "exception caught in Thread %s\n", name_.c_str());
       fprintf(stderr, "reason: %s\n", ex.what());
       abort();
@@ -71,7 +71,6 @@ struct ThreadData {
       fprintf(stderr, "reason: %s\n", "unknown");
       throw;
     }
-    */
   }
 };
 

@@ -30,7 +30,7 @@ using namespace scnet2::net;
 namespace{
 const int kPollWaitTime = 10000;
 __thread BaseLoop *g_loopInThread = 0;
-#pragma GCC diagnostic error "-Wold-style-cast"""
+#pragma GCC diagnostic error "-Wold-style-cast"
 }
 
 BaseLoop::BaseLoop()
@@ -89,8 +89,6 @@ void BaseLoop::loop() {
       tmp = *i;
       tmp->handleEvent();
     }
-    callingQueueCbs_ = false;
-    // Calling callback in the queue(Push main loop thread)
     handleQueueCb();
   }
 
@@ -124,32 +122,39 @@ TimerId BaseLoop::runAt(const Timercb& cb, const Timestamp& ts) {
 void BaseLoop::updateChannel(Channel *c) {
   poll_->updateChannel(c);
 }
+
 void BaseLoop::runInLoop(const boost::function<void ()>& cb) {
+  LOG_DEBUG("Add callback to queuq in loop");
   if (isInLoopThread()) {
     cb();
   } else {
+    LOG_DEBUG("Another thread add callback to loop thread");
     pushQueueInLoop(cb);
   }
 }
+
 bool BaseLoop::isInLoopThread() {
   return threadId_ == CurrentThread::tid();
 }
 
-void BaseLoop::pushQueueInLoop(const boost::function<void ()>& cb) {
+// Always call by another thread
+void BaseLoop::pushQueueInLoop(const boost::function<void ()> cb) {
   {
     MutexLockGuard lock(lock_);
     queueCbs_.push_back(cb);
   }
 
   if (!isInLoopThread() || callingQueueCbs_) {
+    // QueueCbs use COW, so if callback in queue call @pushQueueInLoop we must 
+    // wakeup when callingPollCbs_ is ture so that the event loop can process
+    // it as soon as posiable
     wakeupLoopThread();
   }
 }
 
-
-
 void BaseLoop::wakeupLoopThread() {
   uint64_t u;
+  LOG_DEBUG("To wakeupLoopThread");
   if (::write(wakeupfd_, &u, sizeof u) != sizeof u) {
     perror("write to wakeupfd");
   }
@@ -161,7 +166,9 @@ void BaseLoop::readWakeupfd() {
   if (n != sizeof n) {
     perror("read wakefd");
   }
-  handleQueueCb();
+  // Don't call handleQueueCb here, because it will clear the queueCbs which
+  // will call later by other Channel
+  //handleQueueCb();
 }
 
 int BaseLoop::createFd() {

@@ -42,7 +42,7 @@ class Time : boost::noncopyable {
         return _sequence;
     }
 
-    bool toRepeat() const {
+    bool repeat() const {
         return _repeat;
     }
 
@@ -50,7 +50,6 @@ class Time : boost::noncopyable {
     static int64_t numCreated() {
         return _s_numCreated.get();
     }
-
     
  private:
   const Timercb _callback;

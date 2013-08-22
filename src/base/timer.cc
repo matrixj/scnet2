@@ -68,11 +68,11 @@ using namespace scnet2;
 using namespace scnet2::detail;
 
 Timer::Timer(BaseLoop *loop)
-    :_loop(loop),
-     _timerfd(createTimerfd()),
-     _channel(loop, _timerfd),
-     _timerList(),
-     _callingExpiredTimers(false) {
+    : _loop(loop),
+      _timerfd(createTimerfd()),
+      _channel(loop, _timerfd),
+      _timerPairSet(),
+      _callingExpiredTimers(false) {
     _channel.setReadCb(
         boost::bind(&Timer::readcb, this));
     _channel.enableRead();
@@ -80,8 +80,8 @@ Timer::Timer(BaseLoop *loop)
 
 Timer::~Timer() {
     ::close(_timerfd);
-    for (timerList::iterator i = _timerList.begin();
-        i != _timerList.end(); i++) {
+    for (TimerPairSet::iterator i = _timerPairSet.begin();
+        i != _timerPairSet.end(); i++) {
             delete i->second;
         }
 }
@@ -89,30 +89,28 @@ Timer::~Timer() {
 TimerId Timer::addTimer(const Timercb& cb,
                        Timestamp ts,
                        double interval) {
-    Time *t = new Time(cb, ts, interval);
-    _loop->runInLoop(boost::bind(&Timer::addTimerLoop, this, t));
+  // Time del in the close of Timer
+  Time *t = new Time(cb, ts, interval);
+  _loop->runInLoop(boost::bind(&Timer::addTimerLoop, this, t));
 
-    //addTimerLoop(t);
-    return TimerId(t, t->sequence());
+  return TimerId(t, t->sequence());
 }
 
 void Timer::addTimerLoop(Time *t) {
-    bool firstChaneged = insert(t);
-
-    if (firstChaneged) {
-        resetTimerfd(_timerfd, t->expiration());
-    }
+  bool firstChaneged = insert(t);
+  if (firstChaneged) {
+    resetTimerfd(_timerfd, t->expiration());
+  }
 }
-
 
 void Timer::readcb() {
     Timestamp ts(Timestamp::now());
     readTimerfd(_timerfd, ts);
 
-    std::vector<TimerMap> expired = getExpired(ts);
+    std::vector<TimerPair> expired = getExpired(ts);
     _callingExpiredTimers = true;
     
-    for (std::vector<TimerMap>::iterator i = expired.begin();
+    for (std::vector<TimerPair>::iterator i = expired.begin();
         i != expired.end(); ++i) {
             i->second->run();
         }
@@ -120,51 +118,51 @@ void Timer::readcb() {
     reset(expired, ts);
 }
 
-std::vector<Timer::TimerMap> Timer::getExpired(const Timestamp ts) {
-  std::vector<TimerMap> expired;
-  TimerMap tm = std::make_pair(ts, reinterpret_cast<Time*>(UINT_MAX));
-  timerList::iterator i = _timerList.lower_bound(tm);
-  std::copy(_timerList.begin(), i, back_inserter(expired));
-  _timerList.erase(_timerList.begin(), i);
+std::vector<Timer::TimerPair> Timer::getExpired(const Timestamp ts) {
+  std::vector<TimerPair> expired;
+  TimerPair tp = std::make_pair(ts, reinterpret_cast<Time*>(UINT_MAX));
+  TimerPairSet::iterator i = _timerPairSet.lower_bound(tp);
+  std::copy(_timerPairSet.begin(), i, back_inserter(expired));
+  _timerPairSet.erase(_timerPairSet.begin(), i);
   return expired;
 }
 
-void Timer::reset(const std::vector<TimerMap>& expired, Timestamp ts) {
-    Timestamp nextExpire;
-    for (std::vector<TimerMap>::const_iterator i = expired.begin();
-        i != expired.end(); ++i) {
-            endTimer timer(i->second, i->second->sequence());
-            //if the timer was setted to repeat and not be canceled
-            if (i->second->toRepeat()
-               && _cancelingTimers.find(timer) == _cancelingTimers.end()) {
-                   i->second->restart(ts);
-                   insert(i->second);
-               }
+void Timer::reset(const std::vector<TimerPair>& expired, Timestamp ts) {
+  Timestamp nextExpire;
+  for (std::vector<TimerPair>::const_iterator i = expired.begin();
+    i != expired.end(); ++i) {
+      OverdueTimer timer(i->second, i->second->sequence());
+      //if the timer was setted to repeat and not be canceled
+      if (i->second->repeat()
+         && _cancelingTimers.find(timer) == _cancelingTimers.end()) {
+             i->second->restart(ts);
+             insert(i->second);
+         }
 
-        }
-
+    }
 }
 
 //TODO:Add cancle timer
 
-//If the the time is early then the first time in _timerlist,then must reset the timerfd by timerfd_settime immediately
+// If the time is early then the first timer in _timerPairSet,
+// then must reset the timerfd by timerfd_settime immediately
 bool Timer::insert(Time* t) {
-    bool firstChaneged = false;
-    Timestamp ts = t->expiration();
-    timerList::iterator i = _timerList.begin();
-    if (i == _timerList.end() || ts < i->first) {
-        firstChaneged = true;
-    }
-    {
-        std::pair<timerList::iterator, bool> ret
-        = _timerList.insert(TimerMap(ts, t));
-        assert(ret.second); (void)ret;
-    }
-    {
-        std::pair<endTimerList::iterator, bool> ret
-        =_endTimerList.insert(endTimer(t, t->sequence()));
-        assert(ret.second); (void)ret;
-    }
+  bool firstChaneged = false;
+  Timestamp ts = t->expiration();
+  TimerPairSet::iterator i = _timerPairSet.begin();
+  if (i == _timerPairSet.end() || ts < i->first) {
+      firstChaneged = true;
+  }
+  {
+      std::pair<TimerPairSet::iterator, bool> ret
+          = _timerPairSet.insert(TimerPair(ts, t));
+      assert(ret.second); (void)ret;
+  }
+  {
+      std::pair<OverdueTimerSet::iterator, bool> ret
+          =_overdueTimerList.insert(OverdueTimer(t, t->sequence()));
+      assert(ret.second); (void)ret;
+  }
 
-    return firstChaneged;
+  return firstChaneged;
 }
