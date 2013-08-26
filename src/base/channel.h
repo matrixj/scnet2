@@ -62,6 +62,10 @@ class Channel : boost::noncopyable {
     updatePoller();
   }
 
+  void remove() {
+    //TODO: Remove fd from epfd
+  }
+
   int events() {
     return _events;
   }

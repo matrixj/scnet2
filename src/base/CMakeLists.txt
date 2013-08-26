@@ -1,10 +1,10 @@
 set(base_SRCS
     baseloop.cc
     thread.cc
-    Timer.cc
-    Time.cc
-    Timestamp.cc
-    Channel.cc
+    timer.cc
+    time.cc
+    timestamp.cc
+    channel.cc
     logbuffer.cc
     logger.cc
     condition.cc

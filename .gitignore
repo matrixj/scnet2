@@ -17,3 +17,7 @@
 
 # for myself
 *.wps
+*.dir*
+*.tags
+*CMakeFiles*
+Makefile

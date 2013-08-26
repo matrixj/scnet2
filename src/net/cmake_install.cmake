@@ -39,7 +39,19 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/scnet2/net" TYPE FILE FILES
     "/home/jmchen/work/scnet2/src/net/poller.h"
+    "/home/jmchen/work/scnet2/src/net/sockaddr.h"
+    "/home/jmchen/work/scnet2/src/net/listenner.h"
+    "/home/jmchen/work/scnet2/src/net/socket.h"
+    "/home/jmchen/work/scnet2/src/net/server.h"
+    "/home/jmchen/work/scnet2/src/net/socket_helpers.h"
     "/home/jmchen/work/scnet2/src/net/epoller.h"
+    "/home/jmchen/work/scnet2/src/net/connection.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+
+IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  INCLUDE("/home/jmchen/work/scnet2/src/net/tests/cmake_install.cmake")
+
+ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

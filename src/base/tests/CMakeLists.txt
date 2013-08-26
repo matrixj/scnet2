@@ -21,3 +21,8 @@ target_link_libraries(writefile scnet2_base)
 add_executable(condition_timedwait condition_timedwait_test.cc)
 target_link_libraries(condition_timedwait scnet2_base)
 
+add_executable(timer timer_test.cc)
+target_link_libraries(timer scnet2_base scnet2_net)
+
+add_executable(timer2 timer2_test.cc)
+target_link_libraries(timer2 scnet2_base scnet2_net)

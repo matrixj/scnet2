@@ -39,24 +39,24 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/scnet2/base" TYPE FILE FILES
     "/home/jmchen/work/scnet2/src/base/copyable.h"
-    "/home/jmchen/work/scnet2/src/base/AtomicInt.h"
     "/home/jmchen/work/scnet2/src/base/types.h"
     "/home/jmchen/work/scnet2/src/base/logbuffer.h"
-    "/home/jmchen/work/scnet2/src/base/Time.h"
-    "/home/jmchen/work/scnet2/src/base/TypedefCallback.h"
+    "/home/jmchen/work/scnet2/src/base/timer.h"
+    "/home/jmchen/work/scnet2/src/base/channel.h"
     "/home/jmchen/work/scnet2/src/base/baseloop.h"
     "/home/jmchen/work/scnet2/src/base/printer.h"
+    "/home/jmchen/work/scnet2/src/base/current_thread.h"
     "/home/jmchen/work/scnet2/src/base/thread.h"
     "/home/jmchen/work/scnet2/src/base/countdown_latch.h"
     "/home/jmchen/work/scnet2/src/base/mutexlock.h"
+    "/home/jmchen/work/scnet2/src/base/typedef_callback.h"
     "/home/jmchen/work/scnet2/src/base/buffer.h"
+    "/home/jmchen/work/scnet2/src/base/time.h"
     "/home/jmchen/work/scnet2/src/base/sclog.h"
     "/home/jmchen/work/scnet2/src/base/condition.h"
-    "/home/jmchen/work/scnet2/src/base/CurrentThread.h"
-    "/home/jmchen/work/scnet2/src/base/Timestamp.h"
-    "/home/jmchen/work/scnet2/src/base/Timer.h"
-    "/home/jmchen/work/scnet2/src/base/Channel.h"
+    "/home/jmchen/work/scnet2/src/base/atomic_int.h"
     "/home/jmchen/work/scnet2/src/base/logger.h"
+    "/home/jmchen/work/scnet2/src/base/timestamp.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

@@ -177,6 +177,30 @@ epoller.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/epoller.cc.s
 .PHONY : epoller.cc.s
 
+listenner.o: listenner.cc.o
+.PHONY : listenner.o
+
+# target to build an object file
+listenner.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o
+.PHONY : listenner.cc.o
+
+listenner.i: listenner.cc.i
+.PHONY : listenner.i
+
+# target to preprocess a source file
+listenner.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/listenner.cc.i
+.PHONY : listenner.cc.i
+
+listenner.s: listenner.cc.s
+.PHONY : listenner.s
+
+# target to generate assembly for a file
+listenner.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/listenner.cc.s
+.PHONY : listenner.cc.s
+
 poller.o: poller.cc.o
 .PHONY : poller.o
 
@@ -201,6 +225,102 @@ poller.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/poller.cc.s
 .PHONY : poller.cc.s
 
+server.o: server.cc.o
+.PHONY : server.o
+
+# target to build an object file
+server.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/server.cc.o
+.PHONY : server.cc.o
+
+server.i: server.cc.i
+.PHONY : server.i
+
+# target to preprocess a source file
+server.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/server.cc.i
+.PHONY : server.cc.i
+
+server.s: server.cc.s
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/server.cc.s
+.PHONY : server.cc.s
+
+sockaddr.o: sockaddr.cc.o
+.PHONY : sockaddr.o
+
+# target to build an object file
+sockaddr.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o
+.PHONY : sockaddr.cc.o
+
+sockaddr.i: sockaddr.cc.i
+.PHONY : sockaddr.i
+
+# target to preprocess a source file
+sockaddr.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.i
+.PHONY : sockaddr.cc.i
+
+sockaddr.s: sockaddr.cc.s
+.PHONY : sockaddr.s
+
+# target to generate assembly for a file
+sockaddr.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.s
+.PHONY : sockaddr.cc.s
+
+socket.o: socket.cc.o
+.PHONY : socket.o
+
+# target to build an object file
+socket.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket.cc.o
+.PHONY : socket.cc.o
+
+socket.i: socket.cc.i
+.PHONY : socket.i
+
+# target to preprocess a source file
+socket.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket.cc.i
+.PHONY : socket.cc.i
+
+socket.s: socket.cc.s
+.PHONY : socket.s
+
+# target to generate assembly for a file
+socket.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket.cc.s
+.PHONY : socket.cc.s
+
+socket_helpers.o: socket_helpers.cc.o
+.PHONY : socket_helpers.o
+
+# target to build an object file
+socket_helpers.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o
+.PHONY : socket_helpers.cc.o
+
+socket_helpers.i: socket_helpers.cc.i
+.PHONY : socket_helpers.i
+
+# target to preprocess a source file
+socket_helpers.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.i
+.PHONY : socket_helpers.cc.i
+
+socket_helpers.s: socket_helpers.cc.s
+.PHONY : socket_helpers.s
+
+# target to generate assembly for a file
+socket_helpers.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.s
+.PHONY : socket_helpers.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -217,9 +337,24 @@ help:
 	@echo "... epoller.o"
 	@echo "... epoller.i"
 	@echo "... epoller.s"
+	@echo "... listenner.o"
+	@echo "... listenner.i"
+	@echo "... listenner.s"
 	@echo "... poller.o"
 	@echo "... poller.i"
 	@echo "... poller.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
+	@echo "... sockaddr.o"
+	@echo "... sockaddr.i"
+	@echo "... sockaddr.s"
+	@echo "... socket.o"
+	@echo "... socket.i"
+	@echo "... socket.s"
+	@echo "... socket_helpers.o"
+	@echo "... socket_helpers.i"
+	@echo "... socket_helpers.s"
 .PHONY : help
 
 

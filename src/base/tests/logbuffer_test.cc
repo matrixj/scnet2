@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <base/logbuffer.h>
 #include <base/thread.h>
-#include <base/Timestamp.h>
+#include <base/timestamp.h>
 
 using  std::string;
 using namespace scnet2;

@@ -210,6 +210,34 @@ logbuffer/fast:
 .PHONY : logbuffer/fast
 
 # Convenience name for target.
+src/base/tests/CMakeFiles/timer.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/timer.dir/rule
+.PHONY : src/base/tests/CMakeFiles/timer.dir/rule
+
+# Convenience name for target.
+timer: src/base/tests/CMakeFiles/timer.dir/rule
+.PHONY : timer
+
+# fast build rule for target.
+timer/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer.dir/build.make src/base/tests/CMakeFiles/timer.dir/build
+.PHONY : timer/fast
+
+# Convenience name for target.
+src/base/tests/CMakeFiles/timer2.dir/rule:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/timer2.dir/rule
+.PHONY : src/base/tests/CMakeFiles/timer2.dir/rule
+
+# Convenience name for target.
+timer2: src/base/tests/CMakeFiles/timer2.dir/rule
+.PHONY : timer2
+
+# fast build rule for target.
+timer2/fast:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer2.dir/build.make src/base/tests/CMakeFiles/timer2.dir/build
+.PHONY : timer2/fast
+
+# Convenience name for target.
 src/base/tests/CMakeFiles/writefile.dir/rule:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/writefile.dir/rule
 .PHONY : src/base/tests/CMakeFiles/writefile.dir/rule
@@ -343,6 +371,54 @@ logbuffer_test.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/logbuffer.dir/build.make src/base/tests/CMakeFiles/logbuffer.dir/logbuffer_test.cc.s
 .PHONY : logbuffer_test.cc.s
 
+timer2_test.o: timer2_test.cc.o
+.PHONY : timer2_test.o
+
+# target to build an object file
+timer2_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer2.dir/build.make src/base/tests/CMakeFiles/timer2.dir/timer2_test.cc.o
+.PHONY : timer2_test.cc.o
+
+timer2_test.i: timer2_test.cc.i
+.PHONY : timer2_test.i
+
+# target to preprocess a source file
+timer2_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer2.dir/build.make src/base/tests/CMakeFiles/timer2.dir/timer2_test.cc.i
+.PHONY : timer2_test.cc.i
+
+timer2_test.s: timer2_test.cc.s
+.PHONY : timer2_test.s
+
+# target to generate assembly for a file
+timer2_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer2.dir/build.make src/base/tests/CMakeFiles/timer2.dir/timer2_test.cc.s
+.PHONY : timer2_test.cc.s
+
+timer_test.o: timer_test.cc.o
+.PHONY : timer_test.o
+
+# target to build an object file
+timer_test.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer.dir/build.make src/base/tests/CMakeFiles/timer.dir/timer_test.cc.o
+.PHONY : timer_test.cc.o
+
+timer_test.i: timer_test.cc.i
+.PHONY : timer_test.i
+
+# target to preprocess a source file
+timer_test.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer.dir/build.make src/base/tests/CMakeFiles/timer.dir/timer_test.cc.i
+.PHONY : timer_test.cc.i
+
+timer_test.s: timer_test.cc.s
+.PHONY : timer_test.s
+
+# target to generate assembly for a file
+timer_test.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/tests/CMakeFiles/timer.dir/build.make src/base/tests/CMakeFiles/timer.dir/timer_test.cc.s
+.PHONY : timer_test.cc.s
+
 writefile_test.o: writefile_test.cc.o
 .PHONY : writefile_test.o
 
@@ -384,6 +460,8 @@ help:
 	@echo "... list_install_components"
 	@echo "... logbuffer"
 	@echo "... rebuild_cache"
+	@echo "... timer"
+	@echo "... timer2"
 	@echo "... writefile"
 	@echo "... baseandloop_test.o"
 	@echo "... baseandloop_test.i"
@@ -400,6 +478,12 @@ help:
 	@echo "... logbuffer_test.o"
 	@echo "... logbuffer_test.i"
 	@echo "... logbuffer_test.s"
+	@echo "... timer2_test.o"
+	@echo "... timer2_test.i"
+	@echo "... timer2_test.s"
+	@echo "... timer_test.o"
+	@echo "... timer_test.i"
+	@echo "... timer_test.s"
 	@echo "... writefile_test.o"
 	@echo "... writefile_test.i"
 	@echo "... writefile_test.s"

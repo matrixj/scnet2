@@ -4,8 +4,8 @@
 #include <assert.h>
 #include <poll.h>
 
-using namespace scnet2;
-//using namespace scnet2::base;
+using scnet2::BaseLoop;
+using scnet2::Channel;
 
 const int Channel::RDEVT = POLLIN | POLLPRI;
 const int Channel::WRTEVT = POLLOUT;

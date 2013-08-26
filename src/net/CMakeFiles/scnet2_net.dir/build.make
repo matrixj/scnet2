@@ -97,16 +97,146 @@ src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o.provides: src/net/CMakeFiles/scne
 src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o.provides.build: src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o
 .PHONY : src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o.provides.build
 
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o: src/net/CMakeFiles/scnet2_net.dir/flags.make
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o: src/net/socket_helpers.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o"
+	cd /home/jmchen/work/scnet2/src/net && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_net.dir/socket_helpers.cc.o -c /home/jmchen/work/scnet2/src/net/socket_helpers.cc
+
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_net.dir/socket_helpers.cc.i"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/net/socket_helpers.cc > CMakeFiles/scnet2_net.dir/socket_helpers.cc.i
+
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_net.dir/socket_helpers.cc.s"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/net/socket_helpers.cc -o CMakeFiles/scnet2_net.dir/socket_helpers.cc.s
+
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.requires:
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.requires
+
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.provides: src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.requires
+	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.provides.build
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.provides
+
+src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.provides.build: src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.provides.build
+
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.o: src/net/CMakeFiles/scnet2_net.dir/flags.make
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.o: src/net/socket.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/net/CMakeFiles/scnet2_net.dir/socket.cc.o"
+	cd /home/jmchen/work/scnet2/src/net && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_net.dir/socket.cc.o -c /home/jmchen/work/scnet2/src/net/socket.cc
+
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_net.dir/socket.cc.i"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/net/socket.cc > CMakeFiles/scnet2_net.dir/socket.cc.i
+
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_net.dir/socket.cc.s"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/net/socket.cc -o CMakeFiles/scnet2_net.dir/socket.cc.s
+
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.requires:
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.requires
+
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.provides: src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.requires
+	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.provides.build
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.provides
+
+src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.provides.build: src/net/CMakeFiles/scnet2_net.dir/socket.cc.o
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.provides.build
+
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o: src/net/CMakeFiles/scnet2_net.dir/flags.make
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o: src/net/sockaddr.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o"
+	cd /home/jmchen/work/scnet2/src/net && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_net.dir/sockaddr.cc.o -c /home/jmchen/work/scnet2/src/net/sockaddr.cc
+
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_net.dir/sockaddr.cc.i"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/net/sockaddr.cc > CMakeFiles/scnet2_net.dir/sockaddr.cc.i
+
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_net.dir/sockaddr.cc.s"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/net/sockaddr.cc -o CMakeFiles/scnet2_net.dir/sockaddr.cc.s
+
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.requires:
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.requires
+
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.provides: src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.requires
+	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.provides.build
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.provides
+
+src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.provides.build: src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.provides.build
+
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o: src/net/CMakeFiles/scnet2_net.dir/flags.make
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o: src/net/listenner.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o"
+	cd /home/jmchen/work/scnet2/src/net && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_net.dir/listenner.cc.o -c /home/jmchen/work/scnet2/src/net/listenner.cc
+
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_net.dir/listenner.cc.i"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/net/listenner.cc > CMakeFiles/scnet2_net.dir/listenner.cc.i
+
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_net.dir/listenner.cc.s"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/net/listenner.cc -o CMakeFiles/scnet2_net.dir/listenner.cc.s
+
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.requires:
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.requires
+
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.provides: src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.requires
+	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.provides.build
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.provides
+
+src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.provides.build: src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.provides.build
+
+src/net/CMakeFiles/scnet2_net.dir/server.cc.o: src/net/CMakeFiles/scnet2_net.dir/flags.make
+src/net/CMakeFiles/scnet2_net.dir/server.cc.o: src/net/server.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/jmchen/work/scnet2/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/net/CMakeFiles/scnet2_net.dir/server.cc.o"
+	cd /home/jmchen/work/scnet2/src/net && g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/scnet2_net.dir/server.cc.o -c /home/jmchen/work/scnet2/src/net/server.cc
+
+src/net/CMakeFiles/scnet2_net.dir/server.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/scnet2_net.dir/server.cc.i"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/jmchen/work/scnet2/src/net/server.cc > CMakeFiles/scnet2_net.dir/server.cc.i
+
+src/net/CMakeFiles/scnet2_net.dir/server.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/scnet2_net.dir/server.cc.s"
+	cd /home/jmchen/work/scnet2/src/net && g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/jmchen/work/scnet2/src/net/server.cc -o CMakeFiles/scnet2_net.dir/server.cc.s
+
+src/net/CMakeFiles/scnet2_net.dir/server.cc.o.requires:
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/server.cc.o.requires
+
+src/net/CMakeFiles/scnet2_net.dir/server.cc.o.provides: src/net/CMakeFiles/scnet2_net.dir/server.cc.o.requires
+	$(MAKE) -f src/net/CMakeFiles/scnet2_net.dir/build.make src/net/CMakeFiles/scnet2_net.dir/server.cc.o.provides.build
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/server.cc.o.provides
+
+src/net/CMakeFiles/scnet2_net.dir/server.cc.o.provides.build: src/net/CMakeFiles/scnet2_net.dir/server.cc.o
+.PHONY : src/net/CMakeFiles/scnet2_net.dir/server.cc.o.provides.build
+
 # Object files for target scnet2_net
 scnet2_net_OBJECTS = \
 "CMakeFiles/scnet2_net.dir/poller.cc.o" \
-"CMakeFiles/scnet2_net.dir/epoller.cc.o"
+"CMakeFiles/scnet2_net.dir/epoller.cc.o" \
+"CMakeFiles/scnet2_net.dir/socket_helpers.cc.o" \
+"CMakeFiles/scnet2_net.dir/socket.cc.o" \
+"CMakeFiles/scnet2_net.dir/sockaddr.cc.o" \
+"CMakeFiles/scnet2_net.dir/listenner.cc.o" \
+"CMakeFiles/scnet2_net.dir/server.cc.o"
 
 # External object files for target scnet2_net
 scnet2_net_EXTERNAL_OBJECTS =
 
 lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/poller.cc.o
 lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o
+lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o
+lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/socket.cc.o
+lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o
+lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o
+lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/server.cc.o
 lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/build.make
 lib/libscnet2_net.a: src/net/CMakeFiles/scnet2_net.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library ../../lib/libscnet2_net.a"
@@ -119,6 +249,11 @@ src/net/CMakeFiles/scnet2_net.dir/build: lib/libscnet2_net.a
 
 src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/poller.cc.o.requires
 src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/epoller.cc.o.requires
+src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/socket_helpers.cc.o.requires
+src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/socket.cc.o.requires
+src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/sockaddr.cc.o.requires
+src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/listenner.cc.o.requires
+src/net/CMakeFiles/scnet2_net.dir/requires: src/net/CMakeFiles/scnet2_net.dir/server.cc.o.requires
 .PHONY : src/net/CMakeFiles/scnet2_net.dir/requires
 
 src/net/CMakeFiles/scnet2_net.dir/clean:

@@ -2,7 +2,7 @@
 #include <base/baseloop.h>
 
 using namespace scnet2;
-using namespace scnet2::base;
+//using namespace scnet2::base;
 
 void func()
 {

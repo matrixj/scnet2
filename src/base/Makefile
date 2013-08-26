@@ -153,102 +153,6 @@ scnet2_base/fast:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/build
 .PHONY : scnet2_base/fast
 
-Channel.o: Channel.cc.o
-.PHONY : Channel.o
-
-# target to build an object file
-Channel.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cc.o
-.PHONY : Channel.cc.o
-
-Channel.i: Channel.cc.i
-.PHONY : Channel.i
-
-# target to preprocess a source file
-Channel.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cc.i
-.PHONY : Channel.cc.i
-
-Channel.s: Channel.cc.s
-.PHONY : Channel.s
-
-# target to generate assembly for a file
-Channel.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Channel.cc.s
-.PHONY : Channel.cc.s
-
-Time.o: Time.cc.o
-.PHONY : Time.o
-
-# target to build an object file
-Time.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Time.cc.o
-.PHONY : Time.cc.o
-
-Time.i: Time.cc.i
-.PHONY : Time.i
-
-# target to preprocess a source file
-Time.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Time.cc.i
-.PHONY : Time.cc.i
-
-Time.s: Time.cc.s
-.PHONY : Time.s
-
-# target to generate assembly for a file
-Time.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Time.cc.s
-.PHONY : Time.cc.s
-
-Timer.o: Timer.cc.o
-.PHONY : Timer.o
-
-# target to build an object file
-Timer.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timer.cc.o
-.PHONY : Timer.cc.o
-
-Timer.i: Timer.cc.i
-.PHONY : Timer.i
-
-# target to preprocess a source file
-Timer.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timer.cc.i
-.PHONY : Timer.cc.i
-
-Timer.s: Timer.cc.s
-.PHONY : Timer.s
-
-# target to generate assembly for a file
-Timer.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timer.cc.s
-.PHONY : Timer.cc.s
-
-Timestamp.o: Timestamp.cc.o
-.PHONY : Timestamp.o
-
-# target to build an object file
-Timestamp.cc.o:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.o
-.PHONY : Timestamp.cc.o
-
-Timestamp.i: Timestamp.cc.i
-.PHONY : Timestamp.i
-
-# target to preprocess a source file
-Timestamp.cc.i:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.i
-.PHONY : Timestamp.cc.i
-
-Timestamp.s: Timestamp.cc.s
-.PHONY : Timestamp.s
-
-# target to generate assembly for a file
-Timestamp.cc.s:
-	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/Timestamp.cc.s
-.PHONY : Timestamp.cc.s
-
 baseloop.o: baseloop.cc.o
 .PHONY : baseloop.o
 
@@ -272,6 +176,30 @@ baseloop.s: baseloop.cc.s
 baseloop.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/baseloop.cc.s
 .PHONY : baseloop.cc.s
+
+channel.o: channel.cc.o
+.PHONY : channel.o
+
+# target to build an object file
+channel.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/channel.cc.o
+.PHONY : channel.cc.o
+
+channel.i: channel.cc.i
+.PHONY : channel.i
+
+# target to preprocess a source file
+channel.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/channel.cc.i
+.PHONY : channel.cc.i
+
+channel.s: channel.cc.s
+.PHONY : channel.s
+
+# target to generate assembly for a file
+channel.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/channel.cc.s
+.PHONY : channel.cc.s
 
 condition.o: condition.cc.o
 .PHONY : condition.o
@@ -393,6 +321,78 @@ thread.cc.s:
 	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/thread.cc.s
 .PHONY : thread.cc.s
 
+time.o: time.cc.o
+.PHONY : time.o
+
+# target to build an object file
+time.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/time.cc.o
+.PHONY : time.cc.o
+
+time.i: time.cc.i
+.PHONY : time.i
+
+# target to preprocess a source file
+time.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/time.cc.i
+.PHONY : time.cc.i
+
+time.s: time.cc.s
+.PHONY : time.s
+
+# target to generate assembly for a file
+time.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/time.cc.s
+.PHONY : time.cc.s
+
+timer.o: timer.cc.o
+.PHONY : timer.o
+
+# target to build an object file
+timer.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/timer.cc.o
+.PHONY : timer.cc.o
+
+timer.i: timer.cc.i
+.PHONY : timer.i
+
+# target to preprocess a source file
+timer.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/timer.cc.i
+.PHONY : timer.cc.i
+
+timer.s: timer.cc.s
+.PHONY : timer.s
+
+# target to generate assembly for a file
+timer.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/timer.cc.s
+.PHONY : timer.cc.s
+
+timestamp.o: timestamp.cc.o
+.PHONY : timestamp.o
+
+# target to build an object file
+timestamp.cc.o:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/timestamp.cc.o
+.PHONY : timestamp.cc.o
+
+timestamp.i: timestamp.cc.i
+.PHONY : timestamp.i
+
+# target to preprocess a source file
+timestamp.cc.i:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/timestamp.cc.i
+.PHONY : timestamp.cc.i
+
+timestamp.s: timestamp.cc.s
+.PHONY : timestamp.s
+
+# target to generate assembly for a file
+timestamp.cc.s:
+	cd /home/jmchen/work/scnet2 && $(MAKE) -f src/base/CMakeFiles/scnet2_base.dir/build.make src/base/CMakeFiles/scnet2_base.dir/timestamp.cc.s
+.PHONY : timestamp.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -406,21 +406,12 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... scnet2_base"
-	@echo "... Channel.o"
-	@echo "... Channel.i"
-	@echo "... Channel.s"
-	@echo "... Time.o"
-	@echo "... Time.i"
-	@echo "... Time.s"
-	@echo "... Timer.o"
-	@echo "... Timer.i"
-	@echo "... Timer.s"
-	@echo "... Timestamp.o"
-	@echo "... Timestamp.i"
-	@echo "... Timestamp.s"
 	@echo "... baseloop.o"
 	@echo "... baseloop.i"
 	@echo "... baseloop.s"
+	@echo "... channel.o"
+	@echo "... channel.i"
+	@echo "... channel.s"
 	@echo "... condition.o"
 	@echo "... condition.i"
 	@echo "... condition.s"
@@ -436,6 +427,15 @@ help:
 	@echo "... thread.o"
 	@echo "... thread.i"
 	@echo "... thread.s"
+	@echo "... time.o"
+	@echo "... time.i"
+	@echo "... time.s"
+	@echo "... timer.o"
+	@echo "... timer.i"
+	@echo "... timer.s"
+	@echo "... timestamp.o"
+	@echo "... timestamp.i"
+	@echo "... timestamp.s"
 .PHONY : help
 
 
