@@ -3,11 +3,10 @@
 #include <net/epoller.h>
 #include <base/baseloop.h>
 
-using namespace scnet2;
-using namespace scnet2::net;
-//using namespace scnet2::base;
+using scnet2::BaseLoop;
+using scnet2::net::Poller;
 
-Poller::Poller(BaseLoop *loop) 
+Poller::Poller(BaseLoop *loop)
   : _loop(loop) { }
 
 Poller::~Poller() { }

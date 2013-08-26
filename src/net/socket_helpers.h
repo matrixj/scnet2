@@ -1,47 +1,22 @@
-#ifndef SCNET2_NET_HELPERS_H
-#define SCNET2_NET_HELPERS_H
+#ifndef SRC_NET_SOCKET_HELPERS_H_
+#define SRC_NET_SOCKET_HELPERS_H_
 
-#include <sys/types.h>
-#include <sys/socket.h>
+#include <string>
 
 namespace scnet2 {
 namespace net {
+class SockAddr;
 namespace detail {
 
-void socketCall(const char* callName, int result) {
-  if (result != 0) {
-    perror(callName);
-    abord();
-  }
-}
+void socketCall(const char* callName, int result);
+int createSocketAndSetNonblock();
+void close(int fd);
+void bind(SockAddr& host, int fd);
+void listen(int fd);
+int accept(int fd, SockAddr& peer);
 
-void close() {
-  socketCall("close", ::close());
-}
+}  // namespace detail
+}  // namespace net
+}  // namespace　scnet2
 
-void bind(const SockAddr& host, int fd) {
-  socketCall("bind", ::bind(fd, host.sockaddr(), host.len()));
-}
-
-void listen(int fd) {
-  socketCall("listen", ::listen(fd, SOMAXCONN));
-}
-
-int accept(int fd, const SockAddr& peer) {
-  int err = -1;
-  struct sockaddr_in *peerAddr = peer.sockaddr_in();
-  socketlen_t len = static_cast<socketlen_t>(sizeof peerAddr);
-
-  int acceptFd = ::accept4(fd, toSockaddr(peerAddr), &len, SOCK_NONBLOCK | SOCK_CLOEXEC);
-
-  if (fd < 0) {
-    err = errno;
-    //TODO:Log the reason of fail
-  }
-  return acceptFd;
-}
-
-}// End of namespace detial
-}// End of namespace net
-}// End of namespace scnet2
-#endif
+#endif  // SRC_NET_SOCKET_HELPERS_H_

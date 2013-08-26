@@ -1,18 +1,17 @@
 #include <net/epoller.h>
 
-#include <vector>
-
 #include <stdio.h>
-
 #include <poll.h>
 #include <sys/epoll.h>
+
+#include <vector>
 
 #include <base/channel.h>
 #include <base/types.h>
 
-using namespace scnet2;
-using namespace scnet2::net;
-//using namespace scnet2::base;
+using scnet2::Channel;
+using scnet2::Timestamp;
+using scnet2::net::Epoller;
 
 namespace {
 const int NEW = -1;
@@ -23,7 +22,7 @@ const int ADDED = 2;
 
 Epoller::Epoller(BaseLoop *loop)
   : Poller(loop),
-    _loop(loop), 
+    _loop(loop),
     _epollfd(::epoll_create1(EPOLL_CLOEXEC)),
     _events(64) {
   if (_epollfd < 0) {
@@ -65,13 +64,13 @@ void Epoller::updateChannel(Channel *c) {
   if (idx == NEW || idx == DELED) {
     if (idx == NEW) {
       _channels[fd] = c;
-    } else { 
+    } else {
       assert(_channels.find(fd) != _channels.end());
       assert(_channels[fd] == c);
     }
     c->set_index(ADDED);
     update(EPOLL_CTL_ADD, c);
-  } else { 
+  } else {
     // Modified exist fd
     if (c->isNonCb()) {
       c->set_fd(-1);
@@ -91,5 +90,3 @@ void Epoller::update(int operation, Channel *c) {
     perror("epoll_ctl");
   }
 }
-
-
