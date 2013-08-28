@@ -33,6 +33,10 @@ class Channel : boost::noncopyable {
     updatePoller();
   }
 
+  void setCloseCb(const Callback& cb) {
+    closeCb_ = cb;
+  }
+
   bool isNonCb() {
     return _noneCb;
   }
@@ -73,16 +77,15 @@ class Channel : boost::noncopyable {
   void set_revents(int revents) {
     _revents = revents;
   }
-
   void set_index(int idx) {
     index_ = idx;
   }
-
   int index() {
     return index_;
   }
-
-  
+  bool isWritting() {
+    return _event & WRTEVT;
+  }
   void handleEvent();
 
   private:
@@ -94,6 +97,7 @@ class Channel : boost::noncopyable {
    Callback _readCb;
    Callback _writeCb;
    Callback _errorCb;
+   Callback close_;
 
    BaseLoop *_loop;
    boost::weak_ptr<void> _tie;
