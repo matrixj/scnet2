@@ -6,6 +6,7 @@ using namespace scnet2::net;
 
 Connction::Connection(BaseLoop *loop, std::string& name, int fd, SockAddr& peer)
   : loop_(loop),
+    state_(dDisconnected),
     name_(name),
     addr_(peer),
     fd_(fd),
@@ -13,7 +14,7 @@ Connction::Connection(BaseLoop *loop, std::string& name, int fd, SockAddr& peer)
     channel_(new Channel(loop, fd)) {
   channel_.setReadCb(boost::bind(&Connection::readCallback, this));
   channel_.setWriteCb(boost::bind(&Connection::writeCallback, this));
-  channel_.setErrorCb(boost::bind(&Connection::errorCallback, this));
+//  channel_.setErrorCb(boost::bind(&Connection::errorCallback, this));
   channel_.setCloseCb(boost::bind(&Connection::closeCallback, this));
   socket_.setKeepalive();
 }
@@ -55,7 +56,7 @@ void Connection::send(Buffer *buf) {
 }
 
 // It is call in io thread, no need to make it thread safe
-void Connection::sendInLoopThread(std::string msg) {
+void Connection::sendInLoopThread(const std::string msg) {
   if (state_ != kDisconnected) {
     return;
   }
@@ -93,7 +94,7 @@ void Connection::established() {
   setState(kConnectted);
   channel_.enableRead();
   
-  establishedCallback(shared_from_this());
+  connCallback_(shared_from_this());
 }
 // Read data from system socket buffer to build-in buffer 
 // When socket is able to read
@@ -119,7 +120,7 @@ void Connection::writeCallback() {
   if (channel_->isWritting() && buffToSend_.dataLen() > 0) {
     len = detail::write(fd_, buffToSend_.data(), buffToSend_.dataLen());
     if (len > 0) {
-      buffToSend_.moveBegin(len);
+      buffToSend_.retrieve(len);
       if (buffToSend_.dataLen() == 0) {
         channel_.disableWrite();
         if (completeWriteCallback_) {
@@ -142,7 +143,7 @@ void Connction::closeCallback() {
   channel_.setNoneCb();
   setState(kDisconnected);
 
-  userCloseCallback_(shared_from_this());
+  connCallback_(shared_from_this());
 }
 // Not thread safe
 void Connction::shutDown() {
