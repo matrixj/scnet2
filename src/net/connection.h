@@ -2,6 +2,9 @@
 #define SRC_NET_CONNECTION_H_
 
 #include <net/sockaddr.h>
+#include <base/channel.h>
+#include <net/sockbuffer.h>
+#include <net/socket.h>
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
@@ -18,7 +21,7 @@ class Connection : boost::noncopyable,
  public:
   typedef boost::function<void(const boost::shared_ptr<Connection>)> ConnCallback;
   typedef boost::function<void(const boost::shared_ptr<Connection>, 
-                               Buffer*)> CompleteReadCallback; 
+                               SockBuffer*)> CompleteReadCallback; 
   typedef boost::function<void(const boost::shared_ptr<Connection>)> CompleteWriteCallback;
   typedef boost::function<void(const boost::shared_ptr<Connection>)> CloseCallback;
 
@@ -47,7 +50,7 @@ class Connection : boost::noncopyable,
   void closeCallback();
   void shutDown();
   void send(const void *data, size_t len);
-  void send(Buffer *buf);
+  void send(SockBuffer *buf);
 
   void established();
        
@@ -63,8 +66,12 @@ class Connection : boost::noncopyable,
   BaseLoop *loop_;
   State state_;
   std::string name_;
-  boost::scoped_ptr<struct socket_addr> addr_;
+  SockAddr addr_;
   int fd_;
+  Socket socket_;
+  Channel channel_;
+  SockBuffer buffToSend_;
+  SockBuffer buffToRead_;
 
   ConnCallback connCallback_;
   CompleteReadCallback completeReadCallback_;
