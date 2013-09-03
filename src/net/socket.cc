@@ -62,3 +62,7 @@ void Socket::setKeepalive() {
   detail::socketCall("setKeepalive", setsockopt(fd_, SOL_SOCKET, SO_KEEPALIVE, &on,
                                               static_cast<socklen_t>(sizeof on)));
 }
+
+void Socket::shutDownWrite() {
+  socketCall("shutDownWrite", ::shutdown(fd_, SHUT_RD));
+}
