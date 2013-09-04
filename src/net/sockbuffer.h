@@ -63,7 +63,7 @@ class SockBuffer {
     if (l <= buf_.size() - end_) {
       return; 
     } else {
-      buf_.resize(begin_ + l);
+      buf_.resize(end_ + l);
     }
   }
   const char *beginPtr() const {

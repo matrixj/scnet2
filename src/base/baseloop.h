@@ -42,8 +42,8 @@ class BaseLoop : boost::noncopyable {
 
   static BaseLoop* getLoopInThreadNum();
 
-  TimerId runAt(const Timercb& cb, const Timestamp& ts);
-  void runInLoop(const boost::function<void ()>&);
+  TimerId addTimer(const Timercb& cb, const Timestamp& ts);
+  void delegate(const boost::function<void ()>&);
   void updateChannel(Channel *c);
   bool isInLoopThread();
   void pushQueueInLoop(const boost::function<void ()>);

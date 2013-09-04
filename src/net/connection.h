@@ -10,6 +10,7 @@
 #include <boost/function.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/any.hpp>
 
 namespace scnet2 {
 class BaseLoop;
@@ -26,9 +27,9 @@ class Connection : boost::noncopyable,
   typedef boost::function<void(const boost::shared_ptr<Connection>)> CloseCallback;
 
   Connection(BaseLoop *loop, std::string& name, int fd, SockAddr& peer);
-  ~Connection();
+  ~Connection() {}
   
-  void setcompleteWriteCallback(const CompleteWriteCallback& cb) {
+  void setCompleteWriteCallback(const CompleteWriteCallback& cb) {
     completeWriteCallback_ = cb;
   }
   void setCompleteReadCallback(const CompleteReadCallback& cb) {
@@ -44,7 +45,11 @@ class Connection : boost::noncopyable,
   bool isConnected() {
     return state_ == kConnected;
   }
+  std::string name() const {
+    return name_;
+  }
 
+  // Local funtions 
   void readCallback();
   void writeCallback();
   void closeCallback();
@@ -53,6 +58,15 @@ class Connection : boost::noncopyable,
   void send(SockBuffer *buf);
 
   void established();
+  void setctx(boost::any& ctx) {
+    any_ = ctx;
+  }
+  boost::any *getctx() {
+    return &any_;
+  }
+  SockBuffer& getReadBuffer() {
+    return buffToRead_;
+  }
        
  private:
   void sendInLoop(const std::string msg); 
@@ -72,6 +86,7 @@ class Connection : boost::noncopyable,
   Channel channel_;
   SockBuffer buffToSend_;
   SockBuffer buffToRead_;
+  boost::any any_;
 
   ConnCallback connCallback_;
   CompleteReadCallback completeReadCallback_;
