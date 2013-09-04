@@ -35,7 +35,7 @@ void Connection::send(const void *data, size_t len) {
 
       // FIXME :Have to copy the whole msg 
       // Is nice to use std::forward if possible
-      loop_->runInLoop(boost::bind(&Connection::sendInLoop, this,
+      loop_->delegate(boost::bind(&Connection::sendInLoop, this,
                                          msg));           }
   }
 }
@@ -58,7 +58,7 @@ void Connection::send(SockBuffer *buf) {
       */
     } else {
       string msg(buf->beginPtr(), buf->len());
-      loop_->runInLoop(boost::bind(&Connection::sendInLoop, this,
+      loop_->delegate(boost::bind(&Connection::sendInLoop, this,
                                          msg));
     }
   }
