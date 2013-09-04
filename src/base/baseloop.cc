@@ -58,9 +58,6 @@ BaseLoop::~BaseLoop() {
   g_loopInThread = NULL;
 }
 
-BaseLoop* BaseLoop::getLoopInThreadNum() {
-  return g_loopInThread;
-}
 
 // Start looping  the base event loop
 void BaseLoop::loop() {
@@ -114,7 +111,7 @@ void BaseLoop::quit() {
   quit_ = true;
 }
 
-TimerId BaseLoop::runAt(const Timercb& cb, const Timestamp& ts) {
+TimerId BaseLoop::addTimer(const Timercb& cb, const Timestamp& ts) {
   return timer_->addTimer(cb, ts, 0.0);
 }
 
@@ -122,7 +119,7 @@ void BaseLoop::updateChannel(Channel *c) {
   poll_->updateChannel(c);
 }
 
-void BaseLoop::runInLoop(const boost::function<void ()>& cb) {
+void BaseLoop::delegate(const boost::function<void ()>& cb) {
   LOG_DEBUG("Add callback to queuq in loop");
   if (isInLoopThread()) {
     cb();
@@ -136,7 +133,6 @@ bool BaseLoop::isInLoopThread() {
   return threadId_ == CurrentThread::tid();
 }
 
-// Always call by another thread
 void BaseLoop::pushQueueInLoop(const boost::function<void ()> cb) {
   {
     MutexLockGuard lock(lock_);
