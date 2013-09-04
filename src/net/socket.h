@@ -21,6 +21,7 @@ class Socket : boost::noncopyable {
   void setReuseAddr();
   void setReusePort();
   void setKeepalive();
+  void shutDownWrite();
  private:
   const int fd_;
 };

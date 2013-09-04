@@ -6,6 +6,8 @@ set(base_SRCS
     sockaddr.cc
     listenner.cc
     server.cc
+    connection.cc
+    sockbuffer.cc
     )
 
 add_library(scnet2_net ${base_SRCS})

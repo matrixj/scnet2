@@ -84,7 +84,7 @@ class Channel : boost::noncopyable {
     return index_;
   }
   bool isWritting() {
-    return _event & WRTEVT;
+    return _events & WRTEVT;
   }
   void handleEvent();
 
@@ -97,7 +97,7 @@ class Channel : boost::noncopyable {
    Callback _readCb;
    Callback _writeCb;
    Callback _errorCb;
-   Callback close_;
+   Callback closeCb_;
 
    BaseLoop *_loop;
    boost::weak_ptr<void> _tie;

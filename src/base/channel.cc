@@ -17,8 +17,6 @@ Channel::Channel(BaseLoop *loop, int filedes)
     _revents(0),
     _eventHandling(false),
     _tied(false),
-    writing_(false),
-    reading_(false),
     index_(-1) { }
     
 Channel::~Channel() {
@@ -34,15 +32,11 @@ void Channel::tie(boost::weak_ptr<void>& obj) {
 void Channel::handleEvent() {
  if ( _revents & RDEVT) {
    assert(_readCb);
-   reading_ = true;
    _readCb();
-   readding_ = false;
  }
  if (_revents & WRTEVT) {
    assert(_writeCb);
-   writing_ = true;
    _writeCb();
-   wirtting_ = false;
  }
  //TODO::more events handler
 }
