@@ -9,10 +9,10 @@
 using namespace scnet2;
 using namespace scnet2::net;
 
-Connection::Connection(BaseLoop *loop, std::string& name, int fd, SockAddr& peer)
+Connection::Connection(BaseLoop *loop, std::string& namestr, int fd, SockAddr& peer)
   : loop_(loop),
     state_(kDisconnected),
-    name_(name),
+    name_(namestr),
     addr_(peer),
     fd_(fd),
     socket_(fd_),
@@ -20,6 +20,7 @@ Connection::Connection(BaseLoop *loop, std::string& name, int fd, SockAddr& peer
   channel_.setReadCb(boost::bind(&Connection::readCallback, this));
   channel_.setWriteCb(boost::bind(&Connection::writeCallback, this));
 //  channel_.setErrorCb(boost::bind(&Connection::errorCallback, this));
+  // CloseCb in channel is no working now
   channel_.setCloseCb(boost::bind(&Connection::closeCallback, this));
   socket_.setKeepalive();
 }
@@ -102,7 +103,8 @@ void Connection::established() {
   setState(kConnected);
   channel_.enableRead();
   
-  connCallback_(shared_from_this());
+  if (connCallback_)
+    connCallback_(shared_from_this());
 }
 // Read data from system socket buffer to build-in buffer 
 // When socket is able to read
@@ -112,7 +114,7 @@ void Connection::readCallback() {
   }
   int error;
   ssize_t len = buffToSend_.readSockFd(fd_, &error);
-  if (len > 0) {
+  if (len > 0 && completeReadCallback_) {
     completeReadCallback_(shared_from_this(), &buffToSend_);
   } else if (len == 0) {
     closeCallback();
@@ -152,7 +154,8 @@ void Connection::closeCallback() {
   channel_.setNoneCb();
   setState(kDisconnected);
 
-  connCallback_(shared_from_this());
+  if (connCallback_)
+    connCallback_(shared_from_this());
 }
 // Not thread safe
 void Connection::shutDown() {

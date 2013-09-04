@@ -28,9 +28,8 @@ using namespace scnet2;
 using namespace scnet2::net;
 
 namespace{
-const int kPollWaitTime = 10000;
+const int kPollWaitTime = 5000;
 __thread BaseLoop *g_loopInThread = 0;
-#pragma GCC diagnostic error "-Wold-style-cast"
 }
 
 BaseLoop::BaseLoop()

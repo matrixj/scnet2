@@ -73,7 +73,6 @@ void Epoller::updateChannel(Channel *c) {
   } else {
     // Modified exist fd
     if (c->isNonCb()) {
-      c->set_fd(-1);
       update(EPOLL_CTL_DEL, c);
     } else {
       update(EPOLL_CTL_MOD, c);
