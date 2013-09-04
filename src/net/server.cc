@@ -22,7 +22,7 @@ Server::Server(BaseLoop& loop, SockAddr& sockaddr)
 void Server::start() {
   assert(!started_);
   started_ = true;
-  loop_.runInLoop(boost::bind(&Listenner::listen, &listenner_));
+  loop_.delegate(boost::bind(&Listenner::listen, &listenner_));
 }
 
 void Server::newConnCallback(int fd, SockAddr& peer) {
