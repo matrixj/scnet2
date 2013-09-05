@@ -40,7 +40,7 @@ int detail::createSocketAndSetNonblock() {
 }
 
 void detail::close(int fd) {
-  ::close(fd);
+  close(fd);
 }
 
 void detail::bind(SockAddr&  host, int fd) {
@@ -61,6 +61,7 @@ int detail::accept(int fd, SockAddr& peer) {
 
   if (fd < 0) {
     err = errno;
+    (void) err;
     //TODO:Log the reason of fail
   }
   return acceptFd;

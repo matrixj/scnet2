@@ -50,7 +50,7 @@ void Socket::setReuseAddr() {
 void Socket::setReusePort() {
   #ifdef SO_REUSEPORT
   int on = 1;
-  detail::sockCall("setReusePort", setsockopt(fd_, SOL_SOCKET, SO_REUSEPORT, &on,
+  detail::socketCall("setReusePort", setsockopt(fd_, SOL_SOCKET, SO_REUSEPORT, &on,
                                               static_cast<socklen_t>(sizeof on)));
   #else
 //  fprintf(stderr, "No SO_REUSEPORT support\n");

@@ -91,7 +91,7 @@ TimerId Timer::addTimer(const Timercb& cb,
                        double interval) {
   // Time del in the close of Timer
   Time *t = new Time(cb, ts, interval);
-  _loop->runInLoop(boost::bind(&Timer::addTimerLoop, this, t));
+  _loop->delegate(boost::bind(&Timer::addTimerLoop, this, t));
 
   return TimerId(t, t->sequence());
 }
