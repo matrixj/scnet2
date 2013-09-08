@@ -51,6 +51,7 @@ void LogBuffer::threadFunc() {
   assert(_logging);
 
   bool rc;
+  (void) rc;
   latch_.countDown();
   Logger out(_basename);
   VecTypePtr buffer1(new BufferType);

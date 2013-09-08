@@ -1,65 +1,57 @@
-#include <lua.h>
-#include <xlaulib.h>
+#include "scnet2_actor.h"
+#include "scnet2_scheduler.h"
 
-static int lsend(lua_State *L)
-{
-    struct scnet2_context *context = lua_touserdata(L, lua_upvalueindex(1));
-    int type = lua_type(L, 1);
-    uint32_t dest = 0;
-    switch(type) {
-        case LUA_TNUMBER:
-        dest = lua_tounsigned(L, 1);
-        bread;
-        case LUA_TSTRING: {
-            const char *addr = lua_tostring(L, 1);
-            if (addr[0] == '.' || addr[0] == ':') {
-                dest = scnet2_queryname(context, addr);
-                if (dext == 0) {
-                    luaL_error(L, "Invale name");
-                }
-            } else if (isdigit(addr[0])) {
-                luaL_error(L, "Can not start with a digit %s", addr);
-            } else {
-                return _sendname(L, context, addr);
-            }
-            break;
-        }
-        default:
-        return luaL_error(L, "Unknown addr");
+sturct actor *actor_new(lua_State *L, const char *file) {
+    luaL_requiref(L, "actor.c.socket", socket_lib, 0);
+    lua_pop(L, 1);
+
+    env_getenv(L, "actor_map");
+    int actor_map = lua_absindex(L, -1);
+
+    luaL_requiref(L, "actor.c", actor_lib, 0)
+    struct actor *a = actor_create();
+    c->L = L;
+    actor_touserdata(L, actor_map, a);// ?
+
+    lua_setfield(L, -2, "self");
+
+    env_getenv(L, "system_pointer");
+    struct actor *sys = lua_touserdata(L, -1);
+    lua_pop(L, 1);
+
+    if (sys) {
+        actor_touserdata(L, actor_map, sys);
+        lua_setfield(L, -2, "system");
     }
 
-    int type = luaL_checkinteger(L, 2);
-    int session = 0;
-    if (lua_isnil(L, 3)) {
-        type |= PTYPE_TAG_NEWSESSION;
-    } else {
-        session = luaL_checkinteger(L, 3);
+    lua_pop(L, 2);
+    lua_pushlightuserdata(L, a);
+    env_setenv(L, "actor_pointer");
+
+    int error = luaL_loadfile(L, file);
+    if (error) {
+        fprintf(stderr, "%s\n", lua_tostring(L, -1));
+        lua_pop(L, 1);
+        goto err_goto;
     }
 
-    int mtype = lua_type(L, 4);
-    switch(mtype) {
-        case LUA_TSTRING: {
-            size_t l = 0;
-            void *msg = (void *)lua_tolstring(L, 4, &l);
-            if (l == 0) {
-                msg = NULL;
-            }
-            session = scnet2_send(context, 0, dest, type, session, msg, len);
-            break;
-        }
-        case LUA_TLIGHTUSERDATA: {
-            void *msg = lua_touserdata(L, 4);
-            int sz = luaL_checkinteger(L, 5);
-            session = scnet2_send(context, 0, dest, type | PTYPE_TAG_DONTCOPY, session, msg, sz);
-            break;
-        }
-        default:
-            luaL_error(L, "type not reconize");
-    }
-    if (session < 0) {
-        luaL_error(L, "session < 0");
+    error = lua_pcall(L, 0, 0, 0);
+    if (error) {
+        fprintf(stderr, "%s\n", lua_tostring(L, -1));
+        lua_pop(L, 1);
+        goto err_goto;
     } 
-    lua_pushinteger(L, session);
-    printf("There are %d elem in stack\n", lua_gettop(L));
-    return 1;
+
+    lua_pushcfunction(L, traceback);
+    lua_pushcfunction(L, data_unpack);
+    env_getenv(L, "dispatcher");
+    if (!lua_isfunction(L, -1)) {
+        sprintf(stderr, "dispatch is not a function:%s\n", lua_tostring(L, -1));
+        goto err_goto;
+    }
+    env_getenv(L, "actor_map");
+    lua_pushlightuserdata(L, a);
+    lua_pushcclosure(L, lcallback, 5);
+    return a;
+
 }
