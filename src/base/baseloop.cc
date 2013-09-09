@@ -13,7 +13,7 @@
 #include <base/timer.h>
 #include <base/time.h>
 #include <base/timestamp.h>
-#include <base/channel.h>
+#include <base/event.h>
 #include <base/current_thread.h>
 #include <base/thread.h>
 #include <net/poller.h>
@@ -24,7 +24,6 @@
 
 
 using namespace scnet2;
-//using namespace scnet2::base;
 using namespace scnet2::net;
 
 namespace{
@@ -39,7 +38,7 @@ BaseLoop::BaseLoop()
       poll_(Poller::getEpoll(this)),
       timer_(new Timer(this)),
       wakeupfd_(createFd()),
-      wakeupChannel_(new Channel(this, wakeupfd_)),
+      wakeupEvent_(new Event(this, wakeupfd_)),
       log_("debug"){
   if (g_loopInThread) {
       perror("Another Loop run in this thread");
@@ -47,8 +46,8 @@ BaseLoop::BaseLoop()
       g_loopInThread = this;
   }
 
-  wakeupChannel_->setReadCb(boost::bind(&BaseLoop::readWakeupfd, this));
-  wakeupChannel_->enableRead();
+  wakeupEvent_->setReadCb(boost::bind(&BaseLoop::readWakeupfd, this));
+  wakeupEvent_->enableRead();
   
   log_.start();
 }
@@ -60,34 +59,21 @@ BaseLoop::~BaseLoop() {
 
 
 // Start looping  the base event loop
-void BaseLoop::loop() {
+void BaseLoop::start() {
   LOG_DEBUG("bseLoop::loop start to loop");
 
   assert(!looping_);
   looping_ = true;
   quit_ = false;
-  Channel *tmp;
-
+  uint32_t flags;
   char msg[64];
 
   while (!quit_) {
-    activeChannels_.clear();
-    poll_->wait(kPollWaitTime, &activeChannels_);
     callingPollCbs_ = true;
-    sprintf(msg, "Poller wait return %d activeChannels",
-             static_cast<int>(activeChannels_.size()));
-    LOG_DEBUG(msg);
-    
-    std::vector<Channel*>::iterator i = activeChannels_.begin();
-    // Calling active Channels. The _activeChannels was copy from poller, no
-    // need to be locked by mutexlock
-    for (; i != activeChannels_.end(); i++) {
-      tmp = *i;
-      tmp->handleEvent();
-    }
+    poll_->processEvent(kPollWaitTime, &flags);
+
     handleQueueCb();
   }
-
   LOG_DEBUG("BaseLoop::loop is going to stop");
   looping_ = false;
 }
@@ -115,8 +101,8 @@ TimerId BaseLoop::addTimer(const Timercb& cb, const Timestamp& ts) {
   return timer_->addTimer(cb, ts, 0.0);
 }
 
-void BaseLoop::updateChannel(Channel *c) {
-  poll_->updateChannel(c);
+void BaseLoop::updateEvent(Event *c) {
+  poll_->updateEvent(c);
 }
 
 void BaseLoop::delegate(const boost::function<void ()>& cb) {
@@ -162,7 +148,7 @@ void BaseLoop::readWakeupfd() {
     perror("read wakefd");
   }
   // Don't call handleQueueCb here, because it will clear the queueCbs which
-  // will call later by other Channel
+  // will call later by other Event
   //handleQueueCb();
 }
 

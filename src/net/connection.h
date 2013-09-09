@@ -2,7 +2,7 @@
 #define SRC_NET_CONNECTION_H_
 
 #include <net/sockaddr.h>
-#include <base/channel.h>
+#include <base/event.h>
 #include <net/sockbuffer.h>
 #include <net/socket.h>
 
@@ -83,7 +83,7 @@ class Connection : boost::noncopyable,
   SockAddr addr_;
   int fd_;
   Socket socket_;
-  Channel channel_;
+  Event event_;
   SockBuffer buffToSend_;
   SockBuffer buffToRead_;
   boost::any any_;
@@ -92,6 +92,17 @@ class Connection : boost::noncopyable,
   CompleteReadCallback completeReadCallback_;
   CompleteWriteCallback completeWriteCallback_;
   CloseCallback closeCallback_;
+
+  // If the connection is not depand on any other connection;
+  bool single_connection_;
+  bool timeout_;
+  bool error_;
+  // If the tcp socket of this connection is destroy
+  bool destroyed_;
+  bool idle_;
+  std::vector<Connection *> reuseConnQueue_;
+  bool reusable_;
+  bool close_;
 };
 }  // End of namespace net
 }  // End of namespace scnet2

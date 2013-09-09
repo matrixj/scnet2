@@ -9,7 +9,7 @@
 #include <base/channel.h>
 #include <base/types.h>
 
-using scnet2::Channel;
+using scnet2::Event;
 using scnet2::Timestamp;
 using scnet2::net::Epoller;
 
@@ -22,70 +22,100 @@ const int ADDED = 2;
 
 Epoller::Epoller(BaseLoop *loop)
   : Poller(loop),
-    _loop(loop),
-    _epollfd(::epoll_create1(EPOLL_CLOEXEC)),
-    _events(64) {
-  if (_epollfd < 0) {
+    loop_(loop),
+    epollfd_(::epoll_create1(EPOLL_CLOEXEC)),
+    events_(64) {
+  if (epollfd_ < 0) {
     perror("epoll_create");
   }
 }
-Epoller::~Epoller() { ::close(_epollfd); }
+Epoller::~Epoller() { ::close(epollfd_); }
 
-Timestamp Epoller::wait(int timeout, std::vector<Channel*> *channels) {
-  int n = ::epoll_wait(_epollfd, &(*_events.begin()),
-            static_cast<int>(_events.size()), timeout);
-  if (n > 0) {
-    padChannels(n, channels);
-    if (implicit_cast<size_t>(n) == _events.size()) {
-      _events.resize(n * 2);
-    }
-  } else if (n < 0) {
-    perror("epoll_wait");
+Timestamp Epoller::porcessEvent(int timeout, std::vector<Event*> *events, uint32_t flags) {
+  int events;
+  int err;
+  int i, instance;
+  std::vecotr<Event *> postedAcceptQueue, postedQueue, *eventQueue;
+  events = ::epoll_wait(epollfd_, &(*events_.begin()),
+            static_cast<int>(events_.size()), timeout);
+  err = (events == -1) ? errno : 0;
+  if (events == 0) {
+    // TODO:(matrixj) epoll_wait return 0 event without timeout
   }
+
+  // FIXME: process err
+  if (events > 0) {
+    for (i = 0; i < events; i++) {
+      e = events_[i].data.ptr;
+      instance = (uintptr_t) e & 1;
+      e = static_cast<Event *>((uintptr_t) c & (uintptr_t) ~1);
+    }
+
+    if (e->fd() == -1 || e->rdevent->instance != instance) {
+      continue;
+    }
+    revents = events_[i].events;
+    // We want to read or write to event whatever error happened
+    if ((revents & (EPOLLERR|EPOLLHUP)) && 
+        (revents & (EPOLLIN|EPOLLOUT)) == 0) {
+      revents |= EPOLLIN|EPOLLOUT;
+    }
+    e->set_revents(revents);
+    if ((revents & EPOLLIN) && e->rdevent->active()) {
+      if (flags && SCNET2_POSTEVENTS) {
+        eventQueue = (e->isAcceptEvent() || e->isTimer()) ? &postedAcceptQueue : &postedQueue;
+        eventQueue->push_back(e);
+      } else {
+        e->rdevent->handleEvent();
+      }
+    }
+    if (e->fd() = -1 || e->wrevent->instance() != instance) {
+      continue;
+    } 
+    if ((revents && EPOLLOUT) && e->wrevent->active()) {
+      if (flags && SCNET2_POSTEVENTS) {
+        postedQueue.push_back(e);
+      } else {
+        e->wrevent->handleEvent();
+      }
+  } 
+  
+  if (implicit_cast<size_t>(events) == events_.size())
+      events_.resize(events * 2);
+
+  processEventsAndTimer(postedAcceptQueue, postedQueue);
   return Timestamp::now();
 }
 
-void Epoller::padChannels(int number, std::vector<Channel*> *channels) {
-  int i = 0;
-  for (; i < number; ++i) {
-    assert(_events[i].data.ptr != NULL);
-    Channel *c = static_cast<Channel*>(_events[i].data.ptr);
-    int fd = c->fd();
-    assert(_channels.find(fd) != _channels.end());
-    assert(_channels[fd] == c);
-    c->set_revents(_events[i].events);
-    channels->push_back(c);
+void Epoller::processEventsAndTimer(std::vecotr<Event *>& postedAcceptQueue,
+                                    std::vector<Event *>& postedQueue) { 
+  std::vector<Event *>::iterator it;
+  Evnet *tmp;
+  for (it = postedAcceptQueue.begin(); it != postedAcceptQueue.end(); ++it) {
+    tmp = &(*it);
+    tmp->handler();
+  }
+  for (it = postedQueue.begin(); it != postedQueue.end(); ++it) {
+    tmp = &(*it);
+    tmp->handler();
+    postedQueue.pop_back();
   }
 }
-
-void Epoller::updateChannel(Channel *c) {
-  int idx = c->index();
-  int fd = c->fd();
-  if (idx == NEW || idx == DELED) {
-    if (idx == NEW) {
-      _channels[fd] = c;
-    } else {
-      assert(_channels.find(fd) != _channels.end());
-      assert(_channels[fd] == c);
-    }
-    c->set_index(ADDED);
-    update(EPOLL_CTL_ADD, c);
+void Epoller::updateEvent(Event *e) {
+  struct epoll_event ee;
+  int op;
+  if (e->active()) {
+    op = EPOLL_CTL_ADD;
   } else {
-    // Modified exist fd
-    if (c->isNonCb()) {
-      update(EPOLL_CTL_DEL, c);
-    } else {
-      update(EPOLL_CTL_MOD, c);
-    }
+    op = EPOLL_CTL_MOD;
   }
-}
 
-void Epoller::update(int operation, Channel *c) {
-  struct epoll_event event;
-  bzero(&event, sizeof event);
-  event.events = c->events();
-  event.data.ptr = c;
-  if (::epoll_ctl(_epollfd, operation, c->fd(), &event) != 0) {
+  ee.events = e->events();
+  ee.data.ptr = (void *)((uintptr_t) e | ev->instance);
+  if (::epoll_ctl(epollfd_, op, e->fd(), &ee) == -1) {
     perror("epoll_ctl");
   }
+  e->set_active();
+  return ;
 }
+
