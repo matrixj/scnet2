@@ -128,25 +128,33 @@ void Connection::writeCallback() {
   bool error = false;
 
   if (channel_.isWritting() && buffToSend_.len() > 0) {
-    len = ::write(fd_, buffToSend_.beginPtr(), buffToSend_.len());
-    if (len > 0) {
-      buffToSend_.retrieve(len);
-      if (buffToSend_.len() == 0) {
-        channel_.disableWrite();
-        if (completeWriteCallback_) {
-          loop_->pushQueueInLoop(boost::bind(completeWriteCallback_,
-                                            shared_from_this()));
+    for(;;) {
+      len = ::write(fd_, buffToSend_.beginPtr(), buffToSend_.len());
+      if (len < 0) {
+        switch(errno) {
+          case EINTR:
+            continue;
+          case EAGAIN:
+            break;
         }
-        // This state setted in @shutDownInLoop
-        if (state_ == kDisconnecting) {
-          shutDownInLoop();
-        }
+        shutDownInLoop();
+        return ;
+      } else  (len > 0) {
+        buffToSend_.retrieve(len);
+        if (buffToSend_.len() == 0) {
+          channel_.disableWrite();
+          if (completeWriteCallback_) {
+            loop_->pushQueueInLoop(boost::bind(completeWriteCallback_,
+                                              shared_from_this()));
+          }
+          // This state setted in @shutDownInLoop
+          if (state_ == kDisconnecting) {
+            shutDownInLoop();
+          }
+        } else // If not complete this time ,go out and try in next writtable
+          break;
       }
     }
-
-  } else {
-    (void) error;
-    // TODO(matrixj): To Log message here
   }
 }
 
